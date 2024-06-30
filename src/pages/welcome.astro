@@ -248,26 +248,36 @@ const metadata = {
 
   <Steps2
     title="Reach out to us"
-    subtitle="Have questions? Feel free to contact us using the form below. We're here to help!"
+    subtitle="Have questions? Feel free to contact us using the methods below. Our agency swarm is here to help, 24/7/365!"
     callToAction={{
       text: 'Contact us',
+      // TODO; create contact form
       href: '/',
     }}
     items={[
       {
         title: 'Email us',
-        description: 'contact@support.com',
+        // TODO: turn this into a mail-to link
+        description: 'info@ScaleForce.agency.com',
         icon: 'tabler:mail',
       },
       {
         title: 'Call us',
-        description: '+1 (234) 567-890',
+        // TODO: turn this into a phone link
+        description: '+1 (970) 315-2345',
         icon: 'tabler:headset',
       },
       {
-        title: 'Follow us',
-        description: '@example',
-        icon: 'tabler:brand-twitter',
+        title: 'Chat with us',
+        // TODO: turn this into a chatbot link
+        description: 'Live Chat',
+        icon: 'tabler:keyboard',
+      },
+      {
+        title: 'Book a 30 minute video call',
+        // TODO: turn this into a link to calendly
+        description: 'Meeting Calendar',
+        icon: 'tabler:brand-zoom',
       },
     ]}
   />
