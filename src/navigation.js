@@ -5,9 +5,6 @@ export const headerData = {
     {
       text: 'Welcome',
       href: getPermalink('/welcome'),
-    },{
-      text: 'saas',
-      href: getPermalink('/saas'),
     },
     {
       text: 'Pages',
