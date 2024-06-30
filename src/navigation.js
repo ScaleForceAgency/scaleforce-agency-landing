@@ -7,45 +7,16 @@ export const headerData = {
       href: getPermalink('/'),
     },
     {
-      text: 'Pages',
-      links: [
-        {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
-        },
-        {
-          text: 'Services',
-          href: getPermalink('/services'),
-        },
-        {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
-        },
-        {
-          text: 'About us',
-          href: getPermalink('/about'),
-        },
-        {
-          text: 'Contact',
-          href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
-      ],
+      text: 'Services',
+      href: getPermalink('/#services'),
     },
     {
-      text: 'Services',
-      href: '#',
+      text: 'Features',
+      href: getPermalink('/#features'),
     },
     {
       text: 'FAQ',
-      href: '#',
+      href: getPermalink('/#faq'),
     },
     {
       text: 'Blog',
@@ -72,8 +43,33 @@ export const headerData = {
         },
       ],
     },
+    // {
+    //   text: 'Pages',
+    //   links: [
+    //     {
+    //       text: 'Pricing',
+    //       href: getPermalink('/pricing'),
+    //     },
+    //     {
+    //       text: 'About us',
+    //       href: getPermalink('/about'),
+    //     },
+    //     {
+    //       text: 'Contact',
+    //       href: getPermalink('/contact'),
+    //     },
+    //     {
+    //       text: 'Terms',
+    //       href: getPermalink('/terms'),
+    //     },
+    //     {
+    //       text: 'Privacy policy',
+    //       href: getPermalink('/privacy'),
+    //     },
+    //   ],
+    // },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [{ text: 'Book a call', href: getPermalink('/#contact') }],
 };
 
 export const footerData = {
