@@ -7,7 +7,6 @@ import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features from '~/components/widgets/Features.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
-import Pricing from '~/components/widgets/Pricing.astro';
 
 import { headerData } from '~/navigation';
 import AiSummarizerAgent from '../assets/images/ai-summarizer-agent.png';
@@ -205,49 +204,6 @@ const metadata = {
         title: 'SEO-optimized structure for enhanced visibility',
         description: `Follows SEO best practices with clean code, semantic HTML markup, and fast loading, enhancing search engine rankings. AstroWind's SEO structure ensures visibility to potential customers and clients.`,
         icon: 'tabler:eyeglass',
-      },
-    ]}
-  />
-
-  <!-- Pricing Widget ******************* -->
-
-  <Pricing
-    title="Unleash The Power Of AI In Your Workflows"
-    prices={[
-      {
-        title: 'free',
-        subtitle: 'Access to core features and a wide range of templates',
-        price: '0',
-        period: '/ month',
-        callToAction: {
-          target: '_blank',
-          text: 'Get Started for Free',
-          href: '#',
-        },
-      },
-      {
-        title: 'pro',
-        subtitle: 'Premium templates and advanced customization',
-        price: 15,
-        period: '/ Month',
-        callToAction: {
-          target: '_blank',
-          text: 'Upgrade to Pro',
-          href: '#',
-        },
-        hasRibbon: true,
-        ribbonTitle: 'popular',
-      },
-      {
-        title: 'Enterprise',
-        subtitle: 'Tailored solutions for large-scale projects',
-        price: 45,
-        period: '/ Month',
-        callToAction: {
-          target: '_blank',
-          text: 'Unlock Enterprise Features',
-          href: '#',
-        },
       },
     ]}
   />
