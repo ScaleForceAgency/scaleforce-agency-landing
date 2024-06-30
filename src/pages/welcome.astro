@@ -4,13 +4,16 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import Features from '~/components/widgets/Features.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
-import Content from '~/components/widgets/Content.astro';
 import Pricing from '~/components/widgets/Pricing.astro';
 
 import { headerData } from '~/navigation';
+import AiSummarizerAgent from '../assets/images/ai-summarizer-agent.png';
+import AiVoiceAgent from '../assets/images/ai-voice-agent.png';
+import AiAgentSwarm from '../assets/images/ai-agent-swarm.png';
 import FAQs from '~/components/widgets/FAQs.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
@@ -49,6 +52,119 @@ const metadata = {
       { text: 'Learn more', href: '#' },
     ]}
   />
+
+
+  <!-- Content Widget 1 **************** -->
+
+  <Content
+    isReversed
+    title="Unleash The Power Of AI In Your Workflows"
+    items={[
+      {
+        title: 'Built on top of Astro 4.0',
+        description:
+          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+      },
+      {
+        title: 'Styled using Tailwind CSS',
+        description:
+          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+      },
+      {
+        title: 'Cross-browser compatibility',
+        description:
+          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+      },
+    ]}
+    image={{
+      src: AiSummarizerAgent,
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
+      Gain a competitive advantage by incorporating industry leading practices
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget 2 **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'High level of customization',
+        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+      },
+      {
+        title: 'Multiple layout possibilities',
+        description:
+          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+      },
+      {
+        title: 'Fully responsive design',
+        description:
+          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
+      },
+      {
+        title: 'Integration of media',
+        description:
+          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+      },
+    ]}
+    image={{
+      src: AiVoiceAgent,
+      alt: 'Blueprint Image',
+    }}
+  >
+    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget 3 **************** -->
+
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Enhanced user engagement',
+        description:
+          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
+      },
+      {
+        title: 'Continuous improvement',
+        description:
+          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
+      },
+      {
+        title: 'Time and resource efficiency',
+        description:
+          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
+      },
+      {
+        title: 'Community support',
+        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
+      },
+    ]}
+    image={{
+      src: AiAgentSwarm,
+      alt: 'Astronauts Image',
+    }}
+  >
+    <Fragment slot="content">Designed to foster growth and success.</Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 
   <!-- Hero2 Widget ******************* -->
 
@@ -120,133 +236,10 @@ const metadata = {
     ]}
   />
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    title="Use cases"
-    subtitle="Discover how AstroWind's versatile template serves as the ideal solution for various use cases, providing tailored solutions to drive success."
-    isReversed
-    items={[
-      {
-        title: 'Description:',
-        description:
-          'Are you a startup with big dreams? AstroWind propels your success. Our template forges a seamless online presence, attracting investors and customers from day one. Astro 4.0 and Tailwind CSS ensure striking, responsive sites, leaving lasting impressions. Countless startups leverage AstroWind to kickstart their journey and resonate with audiences.',
-      },
-      {
-        title: 'Benefits:',
-        description: `Allow startups to quickly create professional websites without investing extensive time and resources. <br /> Make a memorable first impression with visually appealing design elements that highlight your startup's unique value proposition. <br /> Ensures your website looks stunning and works well on all devices. <br /> Engage potential investors and customers with engaging content, clear messaging, and intuitive navigation.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1620558138198-cfb9b4f3c294?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1671&q=80',
-      alt: 'Startup Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Startup success stories: <br /><span class="text-2xl">Launching with AstroWind</span>
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent={true}
-    items={[
-      {
-        title: 'Description:',
-        description: `For SaaS businesses, user experience is key. AstroWind enhances showcasing SaaS solutions intuitively. The template's Astro 4.0 and Tailwind CSS integration guarantees user-friendly experience, mirroring your software's efficiency. Customize pages to communicate SaaS value and solutions for your audience.`,
-      },
-      {
-        title: 'Benefits:',
-        description: `Ensuring a cohesive and user-centric design for your SaaS website. <br /> Effectively communicate complex SaaS features through visual aids, animations, and interactive elements. <br /> Prioritize user needs and pain points through well-structured layouts and clear navigation. <br /> Encourage visitors to take action with strategically placed CTAs. <br /> Ensures your SaaS website works seamlessly across all devices.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1531973486364-5fa64260d75b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1658&q=80',
-      alt: 'SaaS Businesses Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        SaaS showcase: <br /><span class="text-2xl">Streamlining user experience</span>
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent={true}
-    items={[
-      {
-        title: 'Description:',
-        description: `Your portfolio is your masterpiece, and AstroWind is your canvas. Whether you're a designer, photographer, artist, or any other creative professional, AstroWind empowers you to showcase your work with elegance and sophistication. Tailored to highlight your creative projects, AstroWind's templates offer a visually immersive experience that lets your portfolio shine.`,
-      },
-      {
-        title: 'Benefits:',
-        description: `Serve as a captivating backdrop to showcase your creative work, capturing attention and leaving a lasting impression. <br /> Tailor your portfolio to reflect your unique style and artistic vision. <br /> Prioritizes visuals, allowing you to present your work in high-resolution detail that draws viewers into your creations. <br /> Enables seamless navigation for effortless portfolio exploration.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Portfolio Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Creative portfolios: <br /><span class="text-2xl">Highlighting your work</span>
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    items={[
-      {
-        title: 'Description:',
-        description: `For small businesses, a well-crafted website can be a game-changer. AstroWind empowers small businesses to not only establish a credible online presence but also convert visitors into loyal customers. The template's thoughtful design and optimization features ensure that your website doesn't just attract attention but also guides visitors through a seamless journey, ultimately leading to conversions.`,
-      },
-      {
-        title: 'Benefits:',
-        description: `Present your small business with a professional and polished website that instills confidence and trust among visitors. <br /> Strategically placed CTAs, user-friendly forms, and optimized layouts work together to drive user engagement and conversions. <br /> Ensure a smooth browsing experience, reducing bounce rates and encouraging interaction.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1514621166532-aa7eb1a3a2f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Small Business Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Small business growth: <br /><span class="text-2xl">Converting visitors into customers</span>
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
   <!-- Pricing Widget ******************* -->
 
   <Pricing
-    title="Flexible pricing plans"
+    title="Unleash The Power Of AI In Your Workflows"
     prices={[
       {
         title: 'free',
