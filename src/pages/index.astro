@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-// import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import AiServicesPanel from '~/components/widgets/Content.astro';
 import StandardServices from '~/components/widgets/Features2.astro';
@@ -17,8 +16,10 @@ import AiSummarizerAgent from '../assets/images/ai-summarizer-agent.png';
 import AiVoiceAgent from '../assets/images/ai-voice-agent.png';
 import AiAgentSwarm from '../assets/images/ai-agent-swarm.png';
 
+import { getPermalink} from '../utils/permalinks'
+
 const metadata = {
-  title: 'Scale Force — Operations, Automations, AI and Agency-as-a-Service Swarms ',
+  title: 'Scale Force — Operations, Integrations, Automations, AI and Agency-as-a-Service Swarms',
   ignoreTitleTemplate: true,
 };
 ---
@@ -31,8 +32,8 @@ const metadata = {
     title="Automate Your Operations, Liberate Your Time"
     subtitle="Get personalized insights, precision workflows and powerful tools based on your unique business needs with AI-driven automations, agents and analytics from Scale Force."
     actions={[
-      { variant: 'primary', text: 'Book A Call', href: '#', icon: 'tabler:square-rounded-arrow-right' },
-      { text: 'Learn more', href: '#' },
+      { variant: 'primary', text: 'Book A Call', href: getPermalink('/#contact'), icon: 'tabler:square-rounded-arrow-right' },
+      { text: 'Learn more', href: getPermalink('/#services') },
     ]}
   />
 
