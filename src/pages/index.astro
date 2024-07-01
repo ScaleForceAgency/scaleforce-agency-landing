@@ -30,10 +30,10 @@ const metadata = {
   <!-- Hero Widget ******************* -->
    
   <Hero
-    title="Automate Your Operations, Liberate Your Time"
-    subtitle="Get personalized insights, precision workflows and powerful tools based on your unique business needs with AI-driven automations, agents and analytics from Scale Force."
+    title="Automate Your Business Operations, Liberate Your Time"
+    subtitle="Get personalized insights, precision workflows and powerful tools based on your unique business needs with customized AI-driven automations, agents and analytics from Scale Force."
     actions={[
-      { variant: 'primary', text: 'Book A Call', href: getPermalink('/#contact'), icon: 'tabler:square-rounded-arrow-right' },
+      { variant: 'primary', text: 'Book A Call', href: getPermalink('/#calendly'), icon: 'tabler:square-rounded-arrow-right' },
       { text: 'Learn more', href: getPermalink('/#services') },
     ]}
   />
@@ -44,7 +44,7 @@ const metadata = {
     id="services"
     isReversed
     tagline="Services"
-    title="Unleash The Power Of AI In Your Workflows"
+    title="Unleash The Power Of AI"
     items={[
       {
         title: 'Built on top of leading services like OpenAI and Poe',
@@ -64,7 +64,7 @@ const metadata = {
     ]}
     image={{
       src: AiSummarizerAgent,
-      alt: 'AI Summarizer Agent Image',
+      alt: 'AI Summarizer Agent',
     }}
   >
     <Fragment slot="content">
@@ -104,7 +104,7 @@ const metadata = {
     ]}
     image={{
       src: AiVoiceAgent,
-      alt: 'AI Voice Agent Image',
+      alt: 'AI Voice Agent',
     }}
   >
     <Fragment slot="content">
@@ -145,7 +145,7 @@ const metadata = {
     ]}
     image={{
       src: AiAgentSwarm,
-      alt: 'AI Agent Swarm Image',
+      alt: 'AI Agent Swarm',
     }}
   >
     <Fragment slot="content">
@@ -254,7 +254,7 @@ const metadata = {
   ]}
   image={{
     src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-    alt: 'Steps image',
+    alt: 'Steps',
   }}
 />
 
@@ -349,7 +349,7 @@ const metadata = {
 
   <!-- Call To Action Widget *********** -->
 
-  <CallToAction
+  <!-- <CallToAction
     actions={[
       {
         variant: 'primary',
@@ -368,11 +368,13 @@ const metadata = {
       Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
       waste more time! :P
     </Fragment>
-  </CallToAction>
+  </CallToAction> -->
 
   <!-- Calendly Widget -->
 
-  <Calendly />
+  <Calendly
+    id="calendly"
+  />
 
   <!-- Steps2 Widget ****************** -->
 
