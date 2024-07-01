@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: ScaleForce
+  site: 'https://ScaleForce.agency'
   base: '/'
   trailingSlash: false
 
@@ -9,9 +9,9 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: ScaleForce
+    template: '%s — ScaleForce'
+  description: "\U0001F680 AI, Automations and Operations agency offering products and services suitable for Startups, Small Business, Legal, Real Estate, Home Services, Business Services, Dispatching, Operators, Recepionists, Appointment Setters, Administrative Assistants, Finance, Healthcare, Marketing, Content, Sales, Restaurants, Hotels, Car Dealerships, Plumbers, Electricians and more."
   robots:
     index: true
     follow: true
@@ -23,8 +23,8 @@ metadata:
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: ''
+    site: ''
     cardType: summary_large_image
 
 i18n:

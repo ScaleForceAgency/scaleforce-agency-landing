@@ -3,7 +3,7 @@ title: 'Terms and Conditions'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
-_Last updated_: January 06, 2023
+_Last updated_: July 01, 2024
 
 Please read these terms and conditions carefully before using Our Service.
 
@@ -117,4 +117,4 @@ By continuing to access or use Our Service after those revisions become effectiv
 
 If you have any questions about these Terms and Conditions, You can contact us:
 
-- By email: somecoolemail@domain.com
+- By email: info@ScaleForce.agency
