@@ -9,6 +9,7 @@ import ClientSuccess from '~/components/widgets/Features.astro';
 import ClientStats from '~/components/widgets/Stats.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Calendly from '~/components/widgets/Calendly.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
@@ -16,7 +17,7 @@ import AiSummarizerAgent from '../assets/images/ai-summarizer-agent.png';
 import AiVoiceAgent from '../assets/images/ai-voice-agent.png';
 import AiAgentSwarm from '../assets/images/ai-agent-swarm.png';
 
-import { getPermalink} from '../utils/permalinks'
+import { getPermalink} from '../utils/permalinks';
 
 const metadata = {
   title: 'Scale Force — Operations, Integrations, Automations, AI and Agency-as-a-Service Swarms',
@@ -368,6 +369,10 @@ const metadata = {
       waste more time! :P
     </Fragment>
   </CallToAction>
+
+  <!-- Calendly Widget -->
+
+  <Calendly />
 
   <!-- Steps2 Widget ****************** -->
 
