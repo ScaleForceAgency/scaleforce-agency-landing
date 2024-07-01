@@ -1,5 +1,25 @@
 ---
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
 import { InlineWidget } from "react-calendly";
----
 
-<InlineWidget url="https://calendly.com/ScaleForce-agency" />
+const {
+  isAfterContent = false,
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-7xl mx-auto ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${classes?.container ?? ''}`}
+  bg={bg}
+>
+  <InlineWidget
+    styles={{
+      height: '650px'
+    }}
+    url="https://calendly.com/ScaleForce-agency"
+  />
+</WidgetWrapper>
