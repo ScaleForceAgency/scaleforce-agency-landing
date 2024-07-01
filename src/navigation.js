@@ -44,7 +44,7 @@ export const headerData = {
       ],
     },
   ],
-  actions: [{ text: 'Book a call', href: getPermalink('/#contact') }],
+  actions: [{ text: 'Book a call', href: getPermalink('/#calendly') }],
 };
 
 export const footerData = {
@@ -61,19 +61,29 @@ export const footerData = {
       ],
     },
     {
-      title: 'Support',
-      links: [
-        { text: 'Docs', href: getPermalink('/') },
-        { text: 'Status', href: getPermalink('/') },
-      ],
-    },
-    {
       title: 'Company',
       links: [
         { text: 'Locations', href: '#' },
         { text: 'About', href: '#' },
         { text: 'Careers', href: '#' },
         { text: 'Press', href: '#' },
+      ],
+    },
+    // TODO: optimize this once everything else is
+    // {
+      //   title: 'Support',
+    //   links: [
+    //     { text: 'Docs', href: getPermalink('/') },
+    //     { text: 'Status', href: getPermalink('/') },
+    //   ],
+    // },
+    {
+      title: 'Contact',
+      links: [
+        { text: 'Phone', href: getPermalink('/#contact') },
+        { text: 'Email', href: getPermalink('/#contact') },
+        { text: 'Chat', href: getPermalink('/#contact') },
+        { text: 'Video', href: getPermalink('/#calendly') },
       ],
     },
   ],
