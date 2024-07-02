@@ -8,8 +8,8 @@ import DevProcess from '~/components/widgets/Steps.astro';
 import ClientSuccess from '~/components/widgets/Features.astro';
 import ClientStats from '~/components/widgets/Stats.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Calendly from '~/components/widgets/Calendly.astro';
+// import CallToAction from '~/components/widgets/CallToAction.astro';
+// import Calendly from '~/components/widgets/Calendly.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
@@ -23,6 +23,11 @@ const metadata = {
   title: 'Scale Force — Operations, Integrations, Automations, AI and Agency-as-a-Service Swarms',
   ignoreTitleTemplate: true,
 };
+
+import { fetchRecords } from '../integrations/astro-airtable/astro-airtable'
+// Fetch records from Airtable
+const aiServiceCards = await fetchRecords('tblqutuRFgQR2e0an');
+
 ---
 
 <Layout metadata={metadata}>
@@ -40,44 +45,13 @@ const metadata = {
 
   <!-- AiServicesPanel Widget 1/3 **************** -->
 
+  <!-- {console.log(table)} -->
   <AiServicesPanel
     id="services"
     isReversed
     tagline="Services"
     title="Unleash The Power Of AI"
-    items={[
-      // {
-      //   title: 'Versatile Application',
-      //   description:
-      //     'Meeting notes, clients call transcripts, research papers, legal work, scraped data and more!  Quickly distill key information without sifting through entire documents​.',
-      // },
-      // {
-      //   title: 'Smart Filtering',
-      //   description:
-      //     'Separate the relvant information from everything else: discover that qualified employee, isolate those financial trasactions, find that high value lead.'
-      // },
-      // {
-      //   title: 'Built on top of leading services like OpenAI and Poe',
-      //   description:
-      //     'Benefiting from the performance and developer-friendly features of these modern services.  Tackles issues like speech overlaps, false starts, and disfluencies in dialogues, ensuring accurate and coherent summaries.',
-      // },
-      {
-        title: "Instant Document Summaries",
-        description: "Our AI summarization agents provide concise, accurate summaries of lengthy documents within seconds, saving time and enhancing productivity."
-      },
-      {
-        title: "Real-Time Meeting Recaps",
-        description: "Transform meetings with real-time summaries, capturing essential points, action items, and decisions as they happen."
-      },
-      {
-        title: "Context-Aware Summarization",
-        description: "Our AI agents excel in context-aware summarization, preserving the original content's nuance and intent."
-      },
-      {
-        title: "Smart Filtering",
-        description: "Harness smart filtering to sort tasks, emails, and documents, highlighting critical information for better workflow."
-      },
-    ]}
+    items={[...aiServiceCards].slice(0,4)}
     image={{
       src: AiSummarizerAgent,
       alt: 'AI Summarizer Agent',
@@ -99,46 +73,7 @@ const metadata = {
 
   <AiServicesPanel
     isAfterContent
-    items={[
-      // {
-      //   title: 'High level of customization',
-      //   description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      // },
-      // {
-      //   title: 'Multiple layout possibilities',
-      //   description:
-      //     'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      // },
-      // {
-      //   title: 'Fully responsive design',
-      //   description:
-      //     "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      // },
-      // {
-      //   title: 'Integration of media',
-      //   description:
-      //     'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      // },
-      {
-        title: 'Natural Language Processing',
-        description: `Our AI voice agents use advanced natural language processing for seamless, accurate conversational interactions.`,
-      },
-      {
-        title: 'Multilingual Support',
-        description:
-          'Break language barriers with AI voice agents supporting multiple languages, ensuring global communication inclusivity.',
-      },
-      {
-        title: 'Personalized Voice Assistants',
-        description:
-          'Experience personalized assistance with AI voice agents, providing customized responses, reminders, and suggestions.',
-      },
-      {
-        title: 'Smart Call Routing',
-        description:
-          'Utilize smart filtering in AI voice agents to manage calls and messages, prioritizing important communications efficiently.',
-      },
-    ]}
+    items={[...aiServiceCards].slice(4,8)}
     image={{
       src: AiVoiceAgent,
       alt: 'AI Voice Agent',
@@ -159,45 +94,7 @@ const metadata = {
   <AiServicesPanel
     isReversed
     isAfterContent
-    items={[
-      // {
-      //   title: 'Enhanced user engagement',
-      //   description:
-      //     'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      // },
-      // {
-      //   title: 'Continuous improvement',
-      //   description:
-      //     'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      // },
-      // {
-      //   title: 'Time and resource efficiency',
-      //   description:
-      //     'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      // },
-      // {
-      //   title: 'Community support',
-      //   description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      // },
-      {
-        title: 'Collaborative Problem Solving',
-        description: 'AI agent swarms tackle complex problems together, leveraging collective intelligence for efficient solutions.',
-      },
-      {
-        title: 'Dynamic Task Allocation',
-        description: 'AI agent swarms dynamically allocate tasks, ensuring optimal resource use and handling fluctuating workloads.'
-      },
-      {
-        title: 'Enhanced Data Analysis',
-        description:
-          'Combine AI agent swarm power for advanced data analysis, uncovering insights and trends from large datasets.',
-      },
-      {
-        title: 'Real-Time Coordination',
-        description:
-          'Benefit from real-time coordination with AI agent swarms, synchronizing actions for optimal results swiftly.',
-      },
-    ]}
+    items={[...aiServiceCards].slice(8,12)}
     image={{
       src: AiAgentSwarm,
       alt: 'AI Agent Swarm',
@@ -427,9 +324,9 @@ const metadata = {
 
   <!-- Calendly Widget -->
 
-  <Calendly
+  <!-- <Calendly
     id="calendly"
-  />
+  /> -->
 
   <!-- Steps2 Widget ****************** -->
 
