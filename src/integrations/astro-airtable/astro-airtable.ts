@@ -13,8 +13,8 @@ const config: AirtableConfig = {
 
 const base = new Airtable({ apiKey: config.apiKey }).base(config.baseId);
 
-export const fetchRecords = async (tableName: string): Promise<FieldSet[]> => {
-  const records: Records<FieldSet> = await base(tableName).select().firstPage();
+export const fetchRecords = async (tableName: string, maxRecords?: number): Promise<FieldSet[]> => {
+  const records: Records<FieldSet> = await base(tableName).select({ maxRecords: maxRecords || 100, sort: [{field: "id", direction: "asc"}] }).all();
   return records.map((record: Record<FieldSet>) => record.fields);
 };
 
