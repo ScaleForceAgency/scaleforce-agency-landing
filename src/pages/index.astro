@@ -10,7 +10,7 @@ import ClientStats from '~/components/widgets/Stats.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 // import CallToAction from '~/components/widgets/CallToAction.astro';
 // import Calendly from '~/components/widgets/Calendly.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
+import Contact from '~/components/widgets/Steps2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 import AiSummarizerAgent from '../assets/images/ai-summarizer-agent.png';
@@ -31,6 +31,7 @@ const heroCard = await fetchRecords('tblAsYTU6dXOJy8T2');
 const servicesCards = await fetchRecords('tblp5aKVIReTS7nLu');
 const featuresCards = await fetchRecords('tbleTFUxoCvZE33be');
 const faqCards = await fetchRecords('tblrN7pkkDGi2PhT9');
+const contactCards = await fetchRecords('tblwAvEwPXTbW3NJT');
 ---
 
 <Layout metadata={metadata}>
@@ -200,43 +201,18 @@ const faqCards = await fetchRecords('tblrN7pkkDGi2PhT9');
     id="calendly"
   /> -->
 
-  <!-- Steps2 Widget ****************** -->
+  <!-- Contact Widget ****************** -->
 
-  <Steps2
+  <Contact
     id="contact"
-    title="Reach out to us"
-    subtitle="Have questions? Feel free to contact us using any of these methods.  Our agency swarm is here to help, 24/7/365!"
+    title={`${contactCards[0].title}`}
+    subtitle={`${contactCards[0].description}`}
     callToAction={{
       text: 'Contact us',
       // TODO; create contact form
       href: '/',
     }}
-    items={[
-      {
-        title: 'Call us',
-        // TODO: turn this into a phone link
-        description: '+1 (970) 315-2345',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Chat with us',
-        // TODO: turn this into a chatbot link
-        description: 'Live Chat ->',
-        icon: 'tabler:keyboard',
-      },
-      {
-        title: 'Book a 30 minute video call',
-        // TODO: turn this into a link to calendly
-        description: 'Meeting Calendar ->',
-        icon: 'tabler:brand-zoom',
-      },
-      {
-        title: 'Email us',
-        // TODO: turn this into a mail-to link
-        description: 'info@ScaleForce.agency.com',
-        icon: 'tabler:mail',
-      },
-    ]}
+    items={[...contactCards].slice(1)}
   />
 
   <!-- Use Cases Blog Widget **************** -->
