@@ -8,6 +8,7 @@ import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 import astrowind from './vendor/integration';
+import astroAirtable from './src/integrations/astro-airtable/astro-airtable';
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter.mjs';
 import react from "@astrojs/react";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -17,31 +18,45 @@ const whenExternalScripts = (items = []) => hasExternalScripts ? Array.isArray(i
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  integrations: [tailwind({
-    applyBaseStyles: false
-  }), sitemap(), mdx(), icon({
-    include: {
-      tabler: ['*'],
-      'flat-color-icons': ['template', 'gallery', 'approval', 'document', 'advertising', 'currency-exchange', 'voice-presentation', 'business-contact', 'database']
-    }
-  }), ...whenExternalScripts(() => partytown({
-    config: {
-      forward: ['dataLayer.push']
-    }
-  })), compress({
-    CSS: true,
-    HTML: {
-      'html-minifier-terser': {
-        removeAttributeQuotes: false
+  integrations: [
+    astroAirtable(),
+    tailwind({
+      applyBaseStyles: false
+    }),
+    sitemap(),
+    mdx(),
+    icon({
+      include: {
+        tabler: ['*'],
+        'flat-color-icons': ['template', 'gallery', 'approval', 'document', 'advertising', 'currency-exchange', 'voice-presentation', 'business-contact', 'database']
       }
+    }),
+    ...whenExternalScripts(() => partytown({
+      config: {
+        forward: ['dataLayer.push']
+      }
+    })),
+    compress({
+      CSS: true,
+      HTML: {
+        'html-minifier-terser': {
+          removeAttributeQuotes: false
+        }
+      },
+      Image: false,
+      JavaScript: true,
+      SVG: false,
+      Logger: 1
+    }),
+    astrowind({
+      config: './src/config.yaml'
+    }),
+    react(),
+    {
+      name: "astro-hello",
+      hooks: {},
     },
-    Image: false,
-    JavaScript: true,
-    SVG: false,
-    Logger: 1
-  }), astrowind({
-    config: './src/config.yaml'
-  }), react()],
+  ],
   image: {
     service: squooshImageService(),
     domains: ['cdn.pixabay.com']

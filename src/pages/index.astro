@@ -8,8 +8,8 @@ import DevProcess from '~/components/widgets/Steps.astro';
 import ClientSuccess from '~/components/widgets/Features.astro';
 import ClientStats from '~/components/widgets/Stats.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Calendly from '~/components/widgets/Calendly.astro';
+// import CallToAction from '~/components/widgets/CallToAction.astro';
+// import Calendly from '~/components/widgets/Calendly.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
@@ -17,12 +17,20 @@ import AiSummarizerAgent from '../assets/images/ai-summarizer-agent.png';
 import AiVoiceAgent from '../assets/images/ai-voice-agent.png';
 import AiAgentSwarm from '../assets/images/ai-agent-swarm.png';
 
-import { getPermalink} from '../utils/permalinks';
+import { getPermalink } from '../utils/permalinks';
+import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 
 const metadata = {
   title: 'Scale Force — Operations, Integrations, Automations, AI and Agency-as-a-Service Swarms',
   ignoreTitleTemplate: true,
 };
+
+// Fetch records from Airtable
+// const images = await fetchRecords('tbloYsMufgsZtzC1K');
+const heroCard = await fetchRecords('tblAsYTU6dXOJy8T2');
+const servicesCards = await fetchRecords('tblp5aKVIReTS7nLu');
+const featuresCards = await fetchRecords('tbleTFUxoCvZE33be');
+const faqCards = await fetchRecords('tblrN7pkkDGi2PhT9');
 ---
 
 <Layout metadata={metadata}>
@@ -30,8 +38,8 @@ const metadata = {
   <!-- Hero Widget ******************* -->
    
   <Hero
-    title="Automate Your Business Operations, Liberate Your Time"
-    subtitle="Get personalized insights, precision workflows and powerful tools based on your unique business needs with customized AI-driven automations, agents and analytics from Scale Force."
+    title={`${heroCard[0].title}`}
+    subtitle={`${heroCard[0].description}`}
     actions={[
       { variant: 'primary', text: 'Book A Call', href: getPermalink('/#calendly'), icon: 'tabler:square-rounded-arrow-right' },
       { text: 'Learn more', href: getPermalink('/#services') },
@@ -43,41 +51,9 @@ const metadata = {
   <AiServicesPanel
     id="services"
     isReversed
-    tagline="Services"
-    title="Unleash The Power Of AI"
-    items={[
-      // {
-      //   title: 'Versatile Application',
-      //   description:
-      //     'Meeting notes, clients call transcripts, research papers, legal work, scraped data and more!  Quickly distill key information without sifting through entire documents​.',
-      // },
-      // {
-      //   title: 'Smart Filtering',
-      //   description:
-      //     'Separate the relvant information from everything else: discover that qualified employee, isolate those financial trasactions, find that high value lead.'
-      // },
-      // {
-      //   title: 'Built on top of leading services like OpenAI and Poe',
-      //   description:
-      //     'Benefiting from the performance and developer-friendly features of these modern services.  Tackles issues like speech overlaps, false starts, and disfluencies in dialogues, ensuring accurate and coherent summaries.',
-      // },
-      {
-        title: "Instant Document Summaries",
-        description: "Our AI summarization agents provide concise, accurate summaries of lengthy documents within seconds, saving time and enhancing productivity."
-      },
-      {
-        title: "Real-Time Meeting Recaps",
-        description: "Transform meetings with real-time summaries, capturing essential points, action items, and decisions as they happen."
-      },
-      {
-        title: "Context-Aware Summarization",
-        description: "Our AI agents excel in context-aware summarization, preserving the original content's nuance and intent."
-      },
-      {
-        title: "Smart Filtering",
-        description: "Harness smart filtering to sort tasks, emails, and documents, highlighting critical information for better workflow."
-      },
-    ]}
+    tagline={`${servicesCards[0].description}`}
+    title={`${servicesCards[0].title}`}
+    items={[...servicesCards].slice(2,6)}
     image={{
       src: AiSummarizerAgent,
       alt: 'AI Summarizer Agent',
@@ -85,9 +61,9 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        AI Summarizer Agents
+        {`${servicesCards[1].title}`}
       </h3>
-      Gain a competitive advantage by incorporating industry leading practices.
+      {`${servicesCards[1].description}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -99,54 +75,17 @@ const metadata = {
 
   <AiServicesPanel
     isAfterContent
-    items={[
-      // {
-      //   title: 'High level of customization',
-      //   description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      // },
-      // {
-      //   title: 'Multiple layout possibilities',
-      //   description:
-      //     'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      // },
-      // {
-      //   title: 'Fully responsive design',
-      //   description:
-      //     "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      // },
-      // {
-      //   title: 'Integration of media',
-      //   description:
-      //     'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      // },
-      {
-        title: 'Natural Language Processing',
-        description: `Our AI voice agents use advanced natural language processing for seamless, accurate conversational interactions.`,
-      },
-      {
-        title: 'Multilingual Support',
-        description:
-          'Break language barriers with AI voice agents supporting multiple languages, ensuring global communication inclusivity.',
-      },
-      {
-        title: 'Personalized Voice Assistants',
-        description:
-          'Experience personalized assistance with AI voice agents, providing customized responses, reminders, and suggestions.',
-      },
-      {
-        title: 'Smart Call Routing',
-        description:
-          'Utilize smart filtering in AI voice agents to manage calls and messages, prioritizing important communications efficiently.',
-      },
-    ]}
+    items={[...servicesCards].slice(7,11)}
     image={{
       src: AiVoiceAgent,
       alt: 'AI Voice Agent',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">AI Voice Agents</h3>
-      Ensure your business presence truly represents you.
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {`${servicesCards[6].title}`}
+      </h3>
+      {`${servicesCards[6].description}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -159,53 +98,17 @@ const metadata = {
   <AiServicesPanel
     isReversed
     isAfterContent
-    items={[
-      // {
-      //   title: 'Enhanced user engagement',
-      //   description:
-      //     'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      // },
-      // {
-      //   title: 'Continuous improvement',
-      //   description:
-      //     'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      // },
-      // {
-      //   title: 'Time and resource efficiency',
-      //   description:
-      //     'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      // },
-      // {
-      //   title: 'Community support',
-      //   description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      // },
-      {
-        title: 'Collaborative Problem Solving',
-        description: 'AI agent swarms tackle complex problems together, leveraging collective intelligence for efficient solutions.',
-      },
-      {
-        title: 'Dynamic Task Allocation',
-        description: 'AI agent swarms dynamically allocate tasks, ensuring optimal resource use and handling fluctuating workloads.'
-      },
-      {
-        title: 'Enhanced Data Analysis',
-        description:
-          'Combine AI agent swarm power for advanced data analysis, uncovering insights and trends from large datasets.',
-      },
-      {
-        title: 'Real-Time Coordination',
-        description:
-          'Benefit from real-time coordination with AI agent swarms, synchronizing actions for optimal results swiftly.',
-      },
-    ]}
+    items={[...servicesCards].slice(12,16)}
     image={{
       src: AiAgentSwarm,
       alt: 'AI Agent Swarm',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">AI Agent Swarms</h3>
-      Designed to foster growth and success.
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {`${servicesCards[11].title}`}
+      </h3>
+      {`${servicesCards[11].description}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -216,60 +119,9 @@ const metadata = {
   <!-- Standard Offerings Widget *************** -->
 
   <StandardServices
-    title="Automations & Operations"
-    subtitle="Frequently used automations, integrations and services for driving business operations success"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
+    title={`${servicesCards[16].title}`}
+    subtitle={`${servicesCards[16].description}`}
+    items={[...servicesCards].slice(17,26)}
   >
   <Fragment slot="bg">
     <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -280,33 +132,10 @@ const metadata = {
 
   <DevProcess
   id="features"
-  tagline="Features"
-  title="Automate up to 80% of repetitive tasks."
-  subtitle="Our process for optimizing your workflows"
-  items={[
-    {
-      title: 'Step 1: <span class="font-medium">Analyze</span>',
-      description:
-        "We'll learn about your current workflow, tools, procedures and business processes",
-      icon: 'tabler:package',
-    },
-    {
-      title: 'Step 2: <span class="font-medium">Add content</span>',
-      description:
-        "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-      icon: 'tabler:letter-case',
-    },
-    {
-      title: 'Step 3: <span class="font-medium">Customize styles</span>',
-      description:
-        'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-      icon: 'tabler:paint',
-    },
-    {
-      title: 'Ready!',
-      icon: 'tabler:check',
-    },
-  ]}
+  tagline={`${featuresCards[0].title}`}
+  title={`${featuresCards[1].title}`}
+  subtitle={`${featuresCards[1].description}`}
+  items={[...featuresCards].slice(2,8)}
   image={{
     src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
     alt: 'Steps',
@@ -316,54 +145,17 @@ const metadata = {
   <!-- Client Success Widget *************** -->
 
   <ClientSuccess
-    title="Why choose ScaleForce?"
-    subtitle="Each of the following features enhances ScaleForce's value proposition."
+  title={`${featuresCards[8].title}`}
+  subtitle={`${featuresCards[8].description}`}
     columns={2}
-    items={[
-      {
-        title: 'Integration of Astro 4.0 and Tailwind CSS',
-        description:
-          'Offers a powerful combination that enhances both the development process and the end-user experience. Also, allows to build dynamic and visually stunning websites with optimized performance.',
-        icon: 'tabler:layers-union',
-      },
-      {
-        title: 'Versatile design for startups, small businesses, and more',
-        description: `Easily customize AstroWind to harmonize with the unique branding and identity of your venture. AstroWind's versatile design adapts to suit your needs.`,
-        icon: 'tabler:artboard',
-      },
-      {
-        title: 'Effortless customization for portfolios and marketing sites',
-        description:
-          'With intuitive customization, easily showcase portfolio pieces, case studies, project highlights, and relevant content. Ideal for creative professionals and businesses looking to highlight their expertise.',
-        icon: 'tabler:writing',
-      },
-      {
-        title: 'Optimized landing pages and engaging blogs',
-        description: `Landing pages are strategically designed to captivate visitors and prompt specific actions. Additionally, the blog creation feature empowers sharing insights, engaging the audience.`,
-        icon: 'tabler:podium',
-      },
-      {
-        title: 'Fast loading times and production-ready code',
-        description: `Using Astro 4.0 ensures fast loading and seamless rendering, enhancing browsing. The code follows best practices, improving user experience, SEO, and reducing bounce rates.`,
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'SEO-optimized structure for enhanced visibility',
-        description: `Follows SEO best practices with clean code, semantic HTML markup, and fast loading, enhancing search engine rankings. AstroWind's SEO structure ensures visibility to potential customers and clients.`,
-        icon: 'tabler:eyeglass',
-      },
-    ]}
+    items={[...featuresCards].slice(9,15)}
   />
   
   <!-- Client Stats Widget *************** -->
 
   <ClientStats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
+  stats={[...featuresCards].slice(16)}
+    
   />
 
 
@@ -371,31 +163,8 @@ const metadata = {
 
   <FAQs
     id="faq"
-    title="Frequently Asked Questions"
-    items={[
-      {
-        title: 'Is AstroWind compatible with the latest versions of Astro and Tailwind CSS?',
-        description:
-          'Yes, AstroWind is designed to be compatible with the latest versions of both Astro and Tailwind CSS. This ensures that you can harness the full capabilities of these technologies while benefiting from the features offered by AstroWind.',
-        icon: 'tabler:chevrons-right',
-      },
-      {
-        title: 'Can I use AstroWind for both personal and commercial projects?',
-        description: `Certainly! AstroWind is versatile and can be used for a wide range of projects, including both personal and commercial endeavors. Whether you're building a professional portfolio, launching a startup, or creating a marketing website, AstroWind has you covered.`,
-        icon: 'tabler:chevrons-right',
-      },
-      {
-        title: 'What level of coding knowledge is required to use AstroWind?',
-        description:
-          'While some familiarity with HTML, CSS, and web development concepts is helpful, the user-friendly interface and customization options allow those with limited coding experience to create impressive websites. For more advanced users, AstroWind offers extensive customization capabilities.',
-        icon: 'tabler:chevrons-right',
-      },
-      {
-        title: 'Is customer support available for AstroWind users seeking guidance?',
-        description: `Absolutely, our dedicated customer support team is here to assist you with any questions or challenges you may encounter. Feel free to reach out to us through our support channels, and we'll be happy to provide the help you need.`,
-        icon: 'tabler:chevrons-right',
-      },
-    ]}
+    title={`${faqCards[0].title}`}
+    items={[...faqCards].slice(1)}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -427,9 +196,9 @@ const metadata = {
 
   <!-- Calendly Widget -->
 
-  <Calendly
+  <!-- <Calendly
     id="calendly"
-  />
+  /> -->
 
   <!-- Steps2 Widget ****************** -->
 
