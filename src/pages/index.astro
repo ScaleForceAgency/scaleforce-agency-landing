@@ -17,16 +17,18 @@ import AiSummarizerAgent from '../assets/images/ai-summarizer-agent.png';
 import AiVoiceAgent from '../assets/images/ai-voice-agent.png';
 import AiAgentSwarm from '../assets/images/ai-agent-swarm.png';
 
-import { getPermalink} from '../utils/permalinks';
+import { getPermalink } from '../utils/permalinks';
+import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 
 const metadata = {
   title: 'Scale Force — Operations, Integrations, Automations, AI and Agency-as-a-Service Swarms',
   ignoreTitleTemplate: true,
 };
 
-import { fetchRecords } from '../integrations/astro-airtable/astro-airtable'
 // Fetch records from Airtable
-const aiServiceCards = await fetchRecords('tblqutuRFgQR2e0an');
+const aiServicesCards = await fetchRecords('tblqutuRFgQR2e0an');
+// const images = await fetchRecords('tbloYsMufgsZtzC1K');
+// const standardServicesCards = await fetchRecords('tbl5Anlj3U0QO2D1P');
 
 ---
 
@@ -49,9 +51,9 @@ const aiServiceCards = await fetchRecords('tblqutuRFgQR2e0an');
   <AiServicesPanel
     id="services"
     isReversed
-    tagline="Services"
-    title="Unleash The Power Of AI"
-    items={[...aiServiceCards].slice(0,4)}
+    tagline={`${aiServicesCards[12].description}`}
+    title={`${aiServicesCards[12].title}`}
+    items={[...aiServicesCards].slice(0,4)}
     image={{
       src: AiSummarizerAgent,
       alt: 'AI Summarizer Agent',
@@ -59,9 +61,9 @@ const aiServiceCards = await fetchRecords('tblqutuRFgQR2e0an');
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        AI Summarizer Agents
+        {`${aiServicesCards[13].title}`}
       </h3>
-      Gain a competitive advantage by incorporating industry leading practices.
+      {`${aiServicesCards[13].description}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -73,15 +75,17 @@ const aiServiceCards = await fetchRecords('tblqutuRFgQR2e0an');
 
   <AiServicesPanel
     isAfterContent
-    items={[...aiServiceCards].slice(4,8)}
+    items={[...aiServicesCards].slice(4,8)}
     image={{
       src: AiVoiceAgent,
       alt: 'AI Voice Agent',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">AI Voice Agents</h3>
-      Ensure your business presence truly represents you.
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {`${aiServicesCards[14].title}`}
+      </h3>
+      {`${aiServicesCards[14].description}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -94,15 +98,17 @@ const aiServiceCards = await fetchRecords('tblqutuRFgQR2e0an');
   <AiServicesPanel
     isReversed
     isAfterContent
-    items={[...aiServiceCards].slice(8,12)}
+    items={[...aiServicesCards].slice(8,12)}
     image={{
       src: AiAgentSwarm,
       alt: 'AI Agent Swarm',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">AI Agent Swarms</h3>
-      Designed to foster growth and success.
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        {`${aiServicesCards[15].title}`}
+      </h3>
+      {`${aiServicesCards[15].description}`}
     </Fragment>
 
     <Fragment slot="bg">
