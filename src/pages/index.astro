@@ -23,14 +23,10 @@ import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 
 // Fetch records from Airtable
 // const images = await fetchRecords('tbloYsMufgsZtzC1K');
-const heroCard = await fetchRecords('tblAsYTU6dXOJy8T2');
-const servicesCards = await fetchRecords('tblp5aKVIReTS7nLu');
-const featuresCards = await fetchRecords('tbleTFUxoCvZE33be');
-const faqCards = await fetchRecords('tblrN7pkkDGi2PhT9');
-const contactCards = await fetchRecords('tblwAvEwPXTbW3NJT');
+const pageContent = await fetchRecords('tblZ51CnMzxuJf5mN');
 
 const metadata = {
-  title: 'Scale Force — Operations, Integrations, Automations, AI and Agency-as-a-Service Swarms',
+  title: `${pageContent[0].title}`,
   ignoreTitleTemplate: true,
 };
 ---
@@ -41,11 +37,11 @@ const metadata = {
    
   <Hero
   id="welcome"
-    title={`${heroCard[0].title}`}
-    subtitle={`${heroCard[0].description}`}
+    title=`${pageContent[1].title}`
+    subtitle=`${pageContent[1].description}`
     actions={[
-      { variant: 'primary', text: 'Book A Call', href: getPermalink('/#calendly'), icon: 'tabler:square-rounded-arrow-right' },
-      { text: 'Learn more', href: getPermalink('/#services') },
+      { variant: 'primary', text: `${pageContent[2].title}`, href: getPermalink(`${pageContent[2].description}`), icon: 'tabler:square-rounded-arrow-right' },
+      { text: `${pageContent[3].title}`, href: getPermalink(`${pageContent[3].description}`) },
     ]}
   />
 
@@ -54,9 +50,9 @@ const metadata = {
   <AiServicesPanel
     id="services"
     isReversed
-    tagline={`${servicesCards[0].description}`}
-    title={`${servicesCards[0].title}`}
-    items={[...servicesCards].slice(2,6)}
+    tagline={`${pageContent[4].description}`}
+    title={`${pageContent[4].title}`}
+    items={[...pageContent].slice(6,10)}
     image={{
       src: AiSummarizerAgent,
       alt: 'AI Summarizer Agent',
@@ -64,9 +60,9 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${servicesCards[1].title}`}
+        {`${pageContent[5].title}`}
       </h3>
-      {`${servicesCards[1].description}`}
+      {`${pageContent[5].description}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -78,7 +74,7 @@ const metadata = {
 
   <AiServicesPanel
     isAfterContent
-    items={[...servicesCards].slice(7,11)}
+    items={[...pageContent].slice(11,15)}
     image={{
       src: AiVoiceAgent,
       alt: 'AI Voice Agent',
@@ -86,9 +82,9 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${servicesCards[6].title}`}
+        {`${pageContent[10].title}`}
       </h3>
-      {`${servicesCards[6].description}`}
+      {`${pageContent[10].description}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -101,7 +97,7 @@ const metadata = {
   <AiServicesPanel
     isReversed
     isAfterContent
-    items={[...servicesCards].slice(12,16)}
+    items={[...pageContent].slice(16,20)}
     image={{
       src: AiAgentSwarm,
       alt: 'AI Agent Swarm',
@@ -109,9 +105,9 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${servicesCards[11].title}`}
+        {`${pageContent[15].title}`}
       </h3>
-      {`${servicesCards[11].description}`}
+      {`${pageContent[15].description}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -122,9 +118,9 @@ const metadata = {
   <!-- Standard Offerings Widget *************** -->
 
   <StandardServices
-    title={`${servicesCards[16].title}`}
-    subtitle={`${servicesCards[16].description}`}
-    items={[...servicesCards].slice(17,26)}
+    title={`${pageContent[20].title}`}
+    subtitle={`${pageContent[20].description}`}
+    items={[...pageContent].slice(21,30)}
   >
   <Fragment slot="bg">
     <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -135,10 +131,10 @@ const metadata = {
 
   <DevProcess
   id="features"
-  tagline={`${featuresCards[0].title}`}
-  title={`${featuresCards[1].title}`}
-  subtitle={`${featuresCards[1].description}`}
-  items={[...featuresCards].slice(2,7)}
+  tagline={`${pageContent[30].title}`}
+  title={`${pageContent[31].title}`}
+  subtitle={`${pageContent[31].description}`}
+  items={[...pageContent].slice(32,37)}
   image={{
     src: DevelopmentProcess,
     alt: 'Development Process',
@@ -148,22 +144,22 @@ const metadata = {
   <!-- Client Success Widget *************** -->
 
   <ClientSuccess
-  title={`${featuresCards[8].title}`}
-  subtitle={`${featuresCards[8].description}`}
+  title={`${pageContent[37].title}`}
+  subtitle={`${pageContent[37].description}`}
     columns={2}
-    items={[...featuresCards].slice(9,15)}
+    items={[...pageContent].slice(38,44)}
   />
   
   <!-- Client Stats Widget *************** -->
 
-  <ClientStats stats={[...featuresCards].slice(16)} />
+  <ClientStats stats={[...pageContent].slice(45,49)} />
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     id="faq"
-    title={`${faqCards[0].title}`}
-    items={[...faqCards].slice(1)}
+    title={`${pageContent[49].title}`}
+    items={[...pageContent].slice(50,54)}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -203,22 +199,22 @@ const metadata = {
 
   <Contact
     id="contact"
-    title={`${contactCards[0].title}`}
-    subtitle={`${contactCards[0].description}`}
+    title={`${pageContent[54].title}`}
+    subtitle={`${pageContent[54].description}`}
     callToAction={{
-      text: 'Contact us',
+      text: `${pageContent[55].title}`,
       // TODO; create contact form
-      href: '/contact',
+      href: `${pageContent[55].description}`,
     }}
-    items={[...contactCards].slice(1)}
+    items={[...pageContent].slice(56,60)}
   />
 
   <!-- Use Cases Blog Widget **************** -->
 
   <BlogLatestPosts
     id="blog"
-    title="Explore use cases on the Scale Force blog"
-    information={`Explore our collection of articles, guides, and use case studies on automations, integrationss, and using AI effectively for your business.`}
+    title={`${pageContent[60].title}`}
+    information={`${pageContent[60].description}`}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
