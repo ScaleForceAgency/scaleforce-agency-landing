@@ -12,7 +12,8 @@ import { SITE } from 'astrowind:config';
   <Image
     src={logo}
     alt="Scale Force Logo"
-    widths={[32,64]}
+    width={logo.width / 5}
+    densities={[1.5, 2]}
     class="mx-2"
     loading="eager"
   />
