@@ -21,11 +21,6 @@ import DevelopmentProcess from '../assets/images/development-process.png';
 import { getPermalink } from '../utils/permalinks';
 import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 
-const metadata = {
-  title: 'Scale Force — Operations, Integrations, Automations, AI and Agency-as-a-Service Swarms',
-  ignoreTitleTemplate: true,
-};
-
 // Fetch records from Airtable
 // const images = await fetchRecords('tbloYsMufgsZtzC1K');
 const heroCard = await fetchRecords('tblAsYTU6dXOJy8T2');
@@ -33,6 +28,11 @@ const servicesCards = await fetchRecords('tblp5aKVIReTS7nLu');
 const featuresCards = await fetchRecords('tbleTFUxoCvZE33be');
 const faqCards = await fetchRecords('tblrN7pkkDGi2PhT9');
 const contactCards = await fetchRecords('tblwAvEwPXTbW3NJT');
+
+const metadata = {
+  title: 'Scale Force — Operations, Integrations, Automations, AI and Agency-as-a-Service Swarms',
+  ignoreTitleTemplate: true,
+};
 ---
 
 <Layout metadata={metadata}>
