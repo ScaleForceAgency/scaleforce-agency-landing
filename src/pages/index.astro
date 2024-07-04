@@ -23,6 +23,7 @@ const metadata = {
   title: `${pageContent[0].title}`,
   ignoreTitleTemplate: true,
 };
+console.log(images[0].file[0].url)
 ---
 
 <Layout metadata={metadata}>
@@ -48,7 +49,7 @@ const metadata = {
     title={`${pageContent[4].title}`}
     items={[...pageContent].slice(6,10)}
     image={{
-      src: images[0].src,
+      src: images[0].file[0].url,
       alt: images[0].alt,
     }}
   >
@@ -70,7 +71,7 @@ const metadata = {
     isAfterContent
     items={[...pageContent].slice(11,15)}
     image={{
-      src: images[1].src,
+      src: images[1].file[0].url,
       alt: images[1].alt,
     }}
   >
@@ -93,7 +94,7 @@ const metadata = {
     isAfterContent
     items={[...pageContent].slice(16,20)}
     image={{
-      src: images[2].src,
+      src: images[2].file[0].url,
       alt: images[2].alt,
     }}
   >
@@ -130,7 +131,7 @@ const metadata = {
   subtitle={`${pageContent[31].description}`}
   items={[...pageContent].slice(32,37)}
   image={{
-    src: images[3].src,
+    src: images[3].file[0].url,
     alt: images[3].alt,
   }}
 />
