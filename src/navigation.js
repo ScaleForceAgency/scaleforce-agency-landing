@@ -19,6 +19,10 @@ export const headerData = {
       href: getPermalink('/#faq'),
     },
     {
+      text: 'Contact',
+      href: getPermalink('/contact'),
+    },
+    {
       text: 'Blog',
       links: [
         {
@@ -34,11 +38,11 @@ export const headerData = {
           href: getPermalink('markdown-elements-demo-post', 'post'),
         },
         {
-          text: 'Category Page',
+          text: 'Categories',
           href: getPermalink('tutorials', 'category'),
         },
         {
-          text: 'Tag Page',
+          text: 'Tags',
           href: getPermalink('astro', 'tag'),
         },
       ],
