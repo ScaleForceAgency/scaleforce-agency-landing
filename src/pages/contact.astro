@@ -3,22 +3,34 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+// import Calendly from '~/components/widgets/Calendly.astro';
+
+import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
+
+// Fetch records from Airtable
+const contactPageContent = await fetchRecords('tblp5aKVIReTS7nLu');
 
 const metadata = {
-  title: 'Contact',
+  title: `${contactPageContent[0].title}`,
 };
 ---
 
 <Layout metadata={metadata}>
-  
+
   <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText tagline={`${contactPageContent[1].description}`} title={`${contactPageContent[1].title}`} />
+
+  <!-- Calendly Widget -->
+
+  <!-- <Calendly id="calendly" /> -->
+
+  <!-- Contact Form Widget -->
 
   <ContactUs
     id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    title={`${contactPageContent[2].title}`}
+    subtitle={`${contactPageContent[2].description}`}
     inputs={[
       {
         type: 'text',
@@ -41,40 +53,28 @@ const metadata = {
     description="Our support team typically responds within 24 business hours."
   />
 
-  <!-- Features2 Widget ************** -->
+  <!-- Contact Info Widget ************** -->
 
   <Features2
-    title="We are here to help!"
-    items={[
-      {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
-      },
-    ]}
+    title={`${contactPageContent[11].title}`}
+    items={[...contactPageContent].slice(12,18)}
+  />
+
+  <!-- Locations Widget ************** -->
+
+  <Features2
+    title={`${contactPageContent[18].title}`}
+    tagline={`${contactPageContent[18].description}`}
+    columns={4}
+    items={[...contactPageContent].slice(19,23)}
+  />
+
+  <!-- Tech Support Widget ************** -->
+
+  <Features2
+    title={`${contactPageContent[23].title}`}
+    tagline={`${contactPageContent[23].description}`}
+    columns={2}
+    items={[...contactPageContent].slice(24,26)}
   />
 </Layout>
