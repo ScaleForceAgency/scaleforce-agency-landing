@@ -16,6 +16,7 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import AiSummarizerAgent from '../assets/images/ai-summarizer-agent.png';
 import AiVoiceAgent from '../assets/images/ai-voice-agent.png';
 import AiAgentSwarm from '../assets/images/ai-agent-swarm.png';
+import DevelopmentProcess from '../assets/images/development-process.png';
 
 import { getPermalink } from '../utils/permalinks';
 import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
@@ -139,8 +140,8 @@ const contactCards = await fetchRecords('tblwAvEwPXTbW3NJT');
   subtitle={`${featuresCards[1].description}`}
   items={[...featuresCards].slice(2,8)}
   image={{
-    src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-    alt: 'Steps',
+    src: DevelopmentProcess,
+    alt: 'Development Process',
   }}
 />
 
