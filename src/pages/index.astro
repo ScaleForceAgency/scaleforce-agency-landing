@@ -22,7 +22,7 @@ import { getPermalink } from '../utils/permalinks';
 import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 
 // Fetch records from Airtable
-// const images = await fetchRecords('tbloYsMufgsZtzC1K');
+const images = await fetchRecords('tbloYsMufgsZtzC1K');
 const pageContent = await fetchRecords('tblZ51CnMzxuJf5mN');
 
 const metadata = {
@@ -54,8 +54,8 @@ const metadata = {
     title={`${pageContent[4].title}`}
     items={[...pageContent].slice(6,10)}
     image={{
-      src: AiSummarizerAgent,
-      alt: 'AI Summarizer Agent',
+      src: images[0].src,
+      alt: images[0].alt,
     }}
   >
     <Fragment slot="content">
@@ -76,8 +76,8 @@ const metadata = {
     isAfterContent
     items={[...pageContent].slice(11,15)}
     image={{
-      src: AiVoiceAgent,
-      alt: 'AI Voice Agent',
+      src: images[1].src,
+      alt: images[1].alt,
     }}
   >
     <Fragment slot="content">
@@ -99,8 +99,8 @@ const metadata = {
     isAfterContent
     items={[...pageContent].slice(16,20)}
     image={{
-      src: AiAgentSwarm,
-      alt: 'AI Agent Swarm',
+      src: images[2].src,
+      alt: images[2].alt,
     }}
   >
     <Fragment slot="content">
@@ -136,8 +136,8 @@ const metadata = {
   subtitle={`${pageContent[31].description}`}
   items={[...pageContent].slice(32,37)}
   image={{
-    src: DevelopmentProcess,
-    alt: 'Development Process',
+    src: images[3].src,
+    alt: images[3].alt,
   }}
 />
 
