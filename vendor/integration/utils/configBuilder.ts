@@ -105,7 +105,7 @@ const getMetadata = (config: Config) => {
     },
     description: '',
     robots: {
-      index: true,
+      index: false,
       follow: false,
     },
     openGraph: {
