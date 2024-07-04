@@ -28,6 +28,7 @@ export default defineConfig({
     icon({
       include: {
         tabler: ['*'],
+        'line-md': ['*'],
         'flat-color-icons': ['template', 'gallery', 'approval', 'document', 'advertising', 'currency-exchange', 'voice-presentation', 'business-contact', 'database']
       }
     }),
