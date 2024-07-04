@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+// import Calendly from '~/components/widgets/Calendly.astro';
 
 import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 
@@ -19,6 +20,12 @@ const metadata = {
   <!-- HeroText Widget ******************* -->
 
   <HeroText tagline={`${contactPageContent[1].description}`} title={`${contactPageContent[1].title}`} />
+
+  <!-- Calendly Widget -->
+
+  <!-- <Calendly id="calendly" /> -->
+
+  <!-- Contact Form Widget -->
 
   <ContactUs
     id="form"
@@ -46,14 +53,14 @@ const metadata = {
     description="Our support team typically responds within 24 business hours."
   />
 
-  <!-- Features2 Widget ************** -->
+  <!-- Contact Info Widget ************** -->
 
   <Features2
     title={`${contactPageContent[11].title}`}
     items={[...contactPageContent].slice(12,18)}
   />
 
-  <!-- Features2 Widget ************** -->
+  <!-- Locations Widget ************** -->
 
   <Features2
     title={`${contactPageContent[18].title}`}
@@ -62,7 +69,7 @@ const metadata = {
     items={[...contactPageContent].slice(19,23)}
   />
 
-  <!-- Features2 Widget ************** -->
+  <!-- Tech Support Widget ************** -->
 
   <Features2
     title={`${contactPageContent[23].title}`}
