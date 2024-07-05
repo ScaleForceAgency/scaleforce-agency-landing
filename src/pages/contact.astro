@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-// import Calendly from '~/components/widgets/Calendly.astro';
+import Calendly from '~/components/widgets/Calendly.astro';
 
 import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 // Fetch records from Airtable
@@ -22,7 +22,7 @@ const metadata = {
 
   <!-- Calendly Widget -->
 
-  <!-- <Calendly id="calendly" /> -->
+  <Calendly id="calendly" class="min-h-screen"/>
 
   <!-- Contact Form Widget -->
 
