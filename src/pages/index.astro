@@ -16,13 +16,43 @@ import { getPermalink } from '../utils/permalinks';
 import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 
 // Fetch records from Airtable
-const images = await fetchRecords('tbloYsMufgsZtzC1K');
+// const images = await fetchRecords('tbloYsMufgsZtzC1K');
 const pageContent = await fetchRecords('tblZ51CnMzxuJf5mN');
 
 const metadata = {
   title: `${pageContent[0].title}`,
   ignoreTitleTemplate: true,
 };
+
+// // Fetch images from Contentful
+import { contentfulClient } from "../lib/contentful";
+// import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import type { EntryFieldTypes } from "contentful";
+
+interface LandingImageFile {
+  fields: {
+    file: {
+      url: EntryFieldTypes.Text
+    }
+  }
+}
+
+interface LandingImage {
+  contentTypeId: "image";
+  fields: {
+    title: EntryFieldTypes.Text;
+    alt: EntryFieldTypes.Text;
+    file: LandingImageFile;
+  }
+}
+const entries = await contentfulClient.getEntries<LandingImage>({
+  content_type: "image",
+});
+const AiSummarizerAgent = entries.items[0];
+const AiVoiceAgent = entries.items[1];
+const AiAgentSwarm = entries.items[2];
+const DevelopmentProcess = entries.items[3];
+
 ---
 
 <Layout metadata={metadata}>
@@ -42,14 +72,14 @@ const metadata = {
   <!-- AiServicesPanel Widget 1/3 **************** -->
 
   <AiServicesPanel
-    id="services"
+    id='services'
     isReversed
     tagline={`${pageContent[4].description}`}
     title={`${pageContent[4].title}`}
     items={[...pageContent].slice(6,10)}
     image={{
-      src: images[0].file[0].url,
-      alt: images[0].alt,
+      src: 'https://images.ctfassets.net/7g58dl79e6zy/2SpFfcGBPLiJ5BNsKrEXkk/a2011ec94b22fe293f1cd8defac122d2/ai-summarizer-agent.png',
+      alt: AiSummarizerAgent.fields.alt,
     }}
   >
     <Fragment slot="content">
@@ -70,8 +100,8 @@ const metadata = {
     isAfterContent
     items={[...pageContent].slice(11,15)}
     image={{
-      src: images[1].file[0].url,
-      alt: images[1].alt,
+      src: 'https://images.ctfassets.net/7g58dl79e6zy/Wrbd82xoTsBC73B5fehXm/e7a29c128632de2e9b9a35e6aadbde01/ai-voice-agent.png',
+      alt: AiVoiceAgent.fields.alt,
     }}
   >
     <Fragment slot="content">
@@ -93,8 +123,8 @@ const metadata = {
     isAfterContent
     items={[...pageContent].slice(16,20)}
     image={{
-      src: images[2].file[0].url,
-      alt: images[2].alt,
+      src: 'https://images.ctfassets.net/7g58dl79e6zy/7f0vEO9M2v8HjkoHxBUoxU/088afbce684c618237b732e28fad94c4/ai-agent-swarm.png',
+      alt: AiAgentSwarm.fields.alt,
     }}
   >
     <Fragment slot="content">
@@ -130,8 +160,8 @@ const metadata = {
   subtitle={`${pageContent[31].description}`}
   items={[...pageContent].slice(32,37)}
   image={{
-    src: images[3].file[0].url,
-    alt: images[3].alt,
+    src: 'https://images.ctfassets.net/7g58dl79e6zy/5nSGprH9KWchvi2TbiYRMV/414528b5e52b1df799d2538158afc0e5/development-process.png',
+    alt: DevelopmentProcess.fields.alt,
   }}
 />
 
