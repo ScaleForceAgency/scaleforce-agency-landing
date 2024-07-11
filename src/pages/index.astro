@@ -11,6 +11,7 @@ import ClientSuccess from '~/components/widgets/Features.astro';
 import ClientStats from '~/components/widgets/Stats.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Contact from '~/components/widgets/Steps2.astro';
+import Locations from '~/components/widgets/Features2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 // Import Utils & Associated Types
@@ -39,6 +40,7 @@ const servicesContent = landingPageContent.items[0].fields.services;
 const featuresContent = landingPageContent.items[0].fields.features;
 const faqContent = landingPageContent.items[0].fields.faq;
 const contactContent = landingPageContent.items[0].fields.contact;
+const contactUsContent = landingPageContent.items[0].fields.contactUs;
 const blogContent = landingPageContent.items[0].fields.blog;
 
 // Declare Page Metadata
@@ -195,6 +197,15 @@ const metadata = {
       href: `${contactContent['fields']['cards'][0]['fields']['description']}`,
     }}
     items={[...contactContent['fields']['cards']].slice(1).map(card => card['fields'])}
+  />
+
+  <!-- Locations Widget ************** -->
+
+  <Locations
+    title={`${contactUsContent[1]['fields']['titleBlock']['fields']['title']}`}
+    tagline={`${contactUsContent[1]['fields']['titleBlock']['fields']['subtitle']}`}
+    columns={4}
+    items={[...contactUsContent[1]['fields']['cards']].map(card => card['fields'])}
   />
 
   <!-- Use Cases Blog Widget **************** -->
