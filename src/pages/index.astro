@@ -1,6 +1,8 @@
 ---
+// Import Layout
 import Layout from '~/layouts/PageLayout.astro';
 
+// Import Components
 import Hero from '~/components/widgets/Hero.astro';
 import AiServicesPanel from '~/components/widgets/Content.astro';
 import StandardServices from '~/components/widgets/Features2.astro';
@@ -11,16 +13,11 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Contact from '~/components/widgets/Steps2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
+// Import Utils & Associated Types
 import { getPermalink } from '../utils/permalinks';
-// import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
-
-// Fetch records from Airtable
-// const pageContent = await fetchRecords('tblZ51CnMzxuJf5mN');
-
-// Fetch records from Contentful
 import { contentfulClient } from "../lib/contentful";
-// TODO: // import { documentToHtmlString } from "@contentful/rich-text-html-renderer"; 
 import type { LandingImage, LandingPage } from '../lib/contentful';
+// TODO: // import { documentToHtmlString } from "@contentful/rich-text-html-renderer"; 
 
 // Fetch images from Contentful
 const images = await contentfulClient.getEntries<LandingImage>({
@@ -45,12 +42,11 @@ const faqContent = landingPageContent.items[0].fields.faq;
 const contactContent = landingPageContent.items[0].fields.contact;
 const blogContent = landingPageContent.items[0].fields.blog;
 
+// Declare Page Metadata
 const metadata = {
   title: `${metadataContent['fields']['pageTitle']}`,
   ignoreTitleTemplate: true,
 };
-
-// console.log(metadataContent['fields']['pageTitle'])
 ---
 
 <Layout metadata={metadata}>
