@@ -3,24 +3,13 @@
 import contentful from "contentful";
 import type { EntryFieldTypes, Asset } from "contentful";
 
-export interface BlogPost {
-  contentTypeId: "blogPost",
-  fields: {
-    title: EntryFieldTypes.Text;
-    content: EntryFieldTypes.RichText;
-    date: EntryFieldTypes.Date;
-    description: EntryFieldTypes.Text;
-    slug: EntryFieldTypes.Text;
-  }
-}
-
 export interface LandingImage {
-  contentTypeId: "image",
+  contentTypeId: "image";
   fields: {
     title: EntryFieldTypes.Text;
     alt: EntryFieldTypes.Text;
     file: Asset;
-  }
+  };
 };
 
 export interface LandingPage {
@@ -37,11 +26,22 @@ export interface LandingPage {
   };
 };
 
+export interface BlogPost {
+  contentTypeId: "blogPost";
+  fields: {
+    title: EntryFieldTypes.Text;
+    content: EntryFieldTypes.RichText;
+    date: EntryFieldTypes.Date;
+    description: EntryFieldTypes.Text;
+    slug: EntryFieldTypes.Text;
+  };
+};
+
 interface Metadata {
-  contentTypeId: "metadata",
+  contentTypeId: "metadata";
   fields: {
     identifier: EntryFieldTypes.Text;
-  }
+  };
 };
 
 interface TitleBlock {
@@ -51,7 +51,7 @@ interface TitleBlock {
     tagline: EntryFieldTypes.Text;
     title: EntryFieldTypes.Text;
     subtitle: EntryFieldTypes.Text;
-  }
+  };
 };
 
 interface Card {
@@ -61,7 +61,7 @@ interface Card {
     title: EntryFieldTypes.Text;
     description: EntryFieldTypes.Text;
     icon: EntryFieldTypes.Symbol;
-  }
+  };
 };
 
 interface FaqCard {
@@ -71,7 +71,7 @@ interface FaqCard {
     question: EntryFieldTypes.Text;
     answer: EntryFieldTypes.Text;
     icon: EntryFieldTypes.Symbol;
-  }
+  };
 };
 
 interface Component {
@@ -81,7 +81,7 @@ interface Component {
     sectionHeader: TitleBlock;
     titleBlockContent: TitleBlock;
     cards: Array<Card> | Array<FaqCard>;
-  }
+  };
 };
 
 export const contentfulClient = contentful.createClient({
