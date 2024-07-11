@@ -12,21 +12,17 @@ import Contact from '~/components/widgets/Steps2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 import { getPermalink } from '../utils/permalinks';
-import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
+// import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 
 // Fetch records from Airtable
-const pageContent = await fetchRecords('tblZ51CnMzxuJf5mN');
-
-const metadata = {
-  title: `${pageContent[0].title}`,
-  ignoreTitleTemplate: true,
-};
+// const pageContent = await fetchRecords('tblZ51CnMzxuJf5mN');
 
 // Fetch records from Contentful
 import { contentfulClient } from "../lib/contentful";
 // TODO: // import { documentToHtmlString } from "@contentful/rich-text-html-renderer"; 
 import type { LandingImage, LandingPage } from '../lib/contentful';
 
+// Fetch images from Contentful
 const images = await contentfulClient.getEntries<LandingImage>({
   content_type: "image",
   include: 10, // TODO: probably should be less than 10
@@ -36,16 +32,25 @@ const AiVoiceAgent = images.items[1];
 const AiAgentSwarm = images.items[2];
 const DevelopmentProcess = images.items[3];
 
+// Fetch page content from Contentful
 const landingPageContent = await contentfulClient.getEntries<LandingPage>({
   content_type: "landingPage",
   include: 10, // TODO: probably should be less than 10
 });
+const metadataContent = landingPageContent.items[0].fields.metadata;
 const heroContent = landingPageContent.items[0].fields.hero;
 const servicesContent = landingPageContent.items[0].fields.services;
 const featuresContent = landingPageContent.items[0].fields.features;
 const faqContent = landingPageContent.items[0].fields.faq;
 const contactContent = landingPageContent.items[0].fields.contact;
 const blogContent = landingPageContent.items[0].fields.blog;
+
+const metadata = {
+  title: `${metadataContent['fields']['pageTitle']}`,
+  ignoreTitleTemplate: true,
+};
+
+// console.log(metadataContent['fields']['pageTitle'])
 ---
 
 <Layout metadata={metadata}>
