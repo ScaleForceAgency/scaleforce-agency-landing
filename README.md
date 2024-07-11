@@ -198,9 +198,9 @@ To customize Font families, Colors or more Elements refer to the following files
 <br>
 
 ## Packages, Integrations and Extensions
-- [npm react-calendly](): provides Calendly embed components
-- [airtable](): custom integration: provides a custom CMS
-- [contentful](): provides image hosting (airtable uses dynamic links and does not suport image hosting for static sites) 
+- [npm react-calendly](https://www.npmjs.com/package/react-calendly): provides Calendly embed components
+- [airtable](https://www.npmjs.com/package/airtable): custom integration for astro: Used as a custom CMS
+- [contentful](https://docs.astro.build/en/guides/cms/contentful/): provides image hosting (airtable uses dynamic links and does not suport image hosting for static sites) 
 
 <br>
 
