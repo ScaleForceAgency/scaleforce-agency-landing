@@ -45,6 +45,8 @@ const heroContent = landingPageContent.items[0].fields.hero;
 const servicesContent = landingPageContent.items[0].fields.services;
 const featuresContent = landingPageContent.items[0].fields.features;
 const faqContent = landingPageContent.items[0].fields.faq;
+
+console.log(images.items[0].fields.file['fields']['file']['url'])
 ---
 
 <Layout metadata={metadata}>
@@ -70,7 +72,7 @@ const faqContent = landingPageContent.items[0].fields.faq;
     title={`${servicesContent[0]['fields']['sectionHeader']['fields']['title']}`}
     items={[...servicesContent[0]['fields']['cards']].map(card => card['fields'])}
     image={{
-      src: 'https://images.ctfassets.net/7g58dl79e6zy/2SpFfcGBPLiJ5BNsKrEXkk/a2011ec94b22fe293f1cd8defac122d2/ai-summarizer-agent.png',
+      src: AiSummarizerAgent.fields.file['fields']['file']['url'],
       alt: AiSummarizerAgent.fields.alt,
     }}
   >
@@ -92,7 +94,7 @@ const faqContent = landingPageContent.items[0].fields.faq;
     isAfterContent
     items={[...servicesContent[1]['fields']['cards']].map(card => card['fields'])}
     image={{
-      src: 'https://images.ctfassets.net/7g58dl79e6zy/Wrbd82xoTsBC73B5fehXm/e7a29c128632de2e9b9a35e6aadbde01/ai-voice-agent.png',
+      src: AiVoiceAgent.fields.file['fields']['file']['url'],
       alt: AiVoiceAgent.fields.alt,
     }}
   >
@@ -115,7 +117,7 @@ const faqContent = landingPageContent.items[0].fields.faq;
     isAfterContent
     items={[...servicesContent[2]['fields']['cards']].map(card => card['fields'])}
     image={{
-      src: 'https://images.ctfassets.net/7g58dl79e6zy/7f0vEO9M2v8HjkoHxBUoxU/088afbce684c618237b732e28fad94c4/ai-agent-swarm.png',
+      src: AiAgentSwarm.fields.file['fields']['file']['url'],
       alt: AiAgentSwarm.fields.alt,
     }}
   >
@@ -152,7 +154,7 @@ const faqContent = landingPageContent.items[0].fields.faq;
   subtitle={`${featuresContent[0]['fields']['titleBlock']['fields']['subtitle']}`}
   items={[...featuresContent[0]['fields']['cards']].map(card => card['fields'])}
   image={{
-    src: 'https://images.ctfassets.net/7g58dl79e6zy/5nSGprH9KWchvi2TbiYRMV/414528b5e52b1df799d2538158afc0e5/development-process.png',
+    src: DevelopmentProcess.fields.file['fields']['file']['url'],
     alt: DevelopmentProcess.fields.alt,
   }}
 />
