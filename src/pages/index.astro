@@ -22,7 +22,6 @@ import type { LandingImage, LandingPage } from '../lib/contentful';
 // Fetch images from Contentful
 const images = await contentfulClient.getEntries<LandingImage>({
   content_type: "image",
-  include: 10, // TODO: probably should be less than 10
 });
 const AiSummarizerAgent = images.items[0];
 const AiVoiceAgent = images.items[1];
@@ -32,7 +31,7 @@ const DevelopmentProcess = images.items[3];
 // Fetch page content from Contentful
 const landingPageContent = await contentfulClient.getEntries<LandingPage>({
   content_type: "landingPage",
-  include: 10, // TODO: probably should be less than 10
+  include: 2,
 });
 const metadataContent = landingPageContent.items[0].fields.metadata;
 const heroContent = landingPageContent.items[0].fields.hero;
