@@ -53,11 +53,11 @@ const faqContent = landingPageContent.items[0].fields.faq;
    
   <Hero
   id="welcome"
-    title=`${heroContent.fields.titleBlock.fields.title}`
-    subtitle=`${heroContent.fields.titleBlock.fields.subtitle}`
+    title=`${heroContent['fields']['titleBlock']['fields']['title']}`
+    subtitle=`${heroContent['fields']['titleBlock']['fields']['subtitle']}`
     actions={[
-      { variant: 'primary', text: `${heroContent.fields.cards[0].fields.title}`, href: getPermalink(`${heroContent.fields.cards[0].fields.description}`), icon: `${heroContent.fields.cards[0].fields.icon}` },
-      { text: `${heroContent.fields.cards[1].fields.title}`, href: getPermalink(`${heroContent.fields.cards[1].fields.description}`) },
+      { variant: 'primary', text: `${heroContent['fields']['cards'][0]['fields']['title']}`, href: getPermalink(`${heroContent['fields']['cards'][0]['fields']['description']}`), icon: `${heroContent['fields']['cards'][0]['fields']['icon']}` },
+      { text: `${heroContent['fields']['cards'][1]['fields']['title']}`, href: getPermalink(`${heroContent['fields']['cards'][1]['fields']['description']}`) },
     ]}
   />
 
@@ -66,9 +66,9 @@ const faqContent = landingPageContent.items[0].fields.faq;
   <AiServicesPanel
     id='services'
     isReversed
-    tagline={`${servicesContent[0].fields.sectionHeader.fields.tagline}`}
-    title={`${servicesContent[0].fields.sectionHeader.fields.title}`}
-    items={[...servicesContent[0].fields.cards].map(card => card.fields)}
+    tagline={`${servicesContent[0]['fields']['sectionHeader']['fields']['tagline']}`}
+    title={`${servicesContent[0]['fields']['sectionHeader']['fields']['title']}`}
+    items={[...servicesContent[0]['fields']['cards']].map(card => card['fields'])}
     image={{
       src: 'https://images.ctfassets.net/7g58dl79e6zy/2SpFfcGBPLiJ5BNsKrEXkk/a2011ec94b22fe293f1cd8defac122d2/ai-summarizer-agent.png',
       alt: AiSummarizerAgent.fields.alt,
@@ -76,9 +76,9 @@ const faqContent = landingPageContent.items[0].fields.faq;
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${servicesContent[0].fields.titleBlock.fields.title}`}
+        {`${servicesContent[0]['fields']['titleBlock']['fields']['title']}`}
       </h3>
-      {`${servicesContent[0].fields.titleBlock.fields.subtitle}`}
+      {`${servicesContent[0]['fields']['titleBlock']['fields']['subtitle']}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -90,7 +90,7 @@ const faqContent = landingPageContent.items[0].fields.faq;
 
   <AiServicesPanel
     isAfterContent
-    items={[...servicesContent[1].fields.cards].map(card => card.fields)}
+    items={[...servicesContent[1]['fields']['cards']].map(card => card['fields'])}
     image={{
       src: 'https://images.ctfassets.net/7g58dl79e6zy/Wrbd82xoTsBC73B5fehXm/e7a29c128632de2e9b9a35e6aadbde01/ai-voice-agent.png',
       alt: AiVoiceAgent.fields.alt,
@@ -98,9 +98,9 @@ const faqContent = landingPageContent.items[0].fields.faq;
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${servicesContent[1].fields.titleBlock.fields.title}`}
+        {`${servicesContent[1]['fields']['titleBlock']['fields']['title']}`}
       </h3>
-      {`${servicesContent[1].fields.titleBlock.fields.subtitle}`}
+      {`${servicesContent[1]['fields']['titleBlock']['fields']['subtitle']}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -113,7 +113,7 @@ const faqContent = landingPageContent.items[0].fields.faq;
   <AiServicesPanel
     isReversed
     isAfterContent
-    items={[...servicesContent[2].fields.cards].map(card => card.fields)}
+    items={[...servicesContent[2]['fields']['cards']].map(card => card['fields'])}
     image={{
       src: 'https://images.ctfassets.net/7g58dl79e6zy/7f0vEO9M2v8HjkoHxBUoxU/088afbce684c618237b732e28fad94c4/ai-agent-swarm.png',
       alt: AiAgentSwarm.fields.alt,
@@ -121,9 +121,9 @@ const faqContent = landingPageContent.items[0].fields.faq;
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${servicesContent[2].fields.titleBlock.fields.title}`}
+        {`${servicesContent[2]['fields']['titleBlock']['fields']['title']}`}
       </h3>
-      {`${servicesContent[2].fields.titleBlock.fields.subtitle}`}
+      {`${servicesContent[2]['fields']['titleBlock']['fields']['subtitle']}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -134,9 +134,9 @@ const faqContent = landingPageContent.items[0].fields.faq;
   <!-- Standard Offerings Widget *************** -->
 
   <StandardServices
-    title={`${servicesContent[3].fields.titleBlock.fields.title}`}
-    subtitle={`${servicesContent[3].fields.titleBlock.fields.subtitle}`}
-    items={[...servicesContent[3].fields.cards].map(card => card.fields)}
+    title={`${servicesContent[3]['fields']['titleBlock']['fields']['title']}`}
+    subtitle={`${servicesContent[3]['fields']['titleBlock']['fields']['subtitle']}`}
+    items={[...servicesContent[3]['fields']['cards']].map(card => card['fields'])}
   >
   <Fragment slot="bg">
     <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -147,10 +147,10 @@ const faqContent = landingPageContent.items[0].fields.faq;
 
   <DevProcess
   id="features"
-  tagline={`${featuresContent[0].fields.titleBlock.fields.tagline}`}
-  title={`${featuresContent[0].fields.titleBlock.fields.title}`}
-  subtitle={`${featuresContent[0].fields.titleBlock.fields.subtitle}`}
-  items={[...featuresContent[0].fields.cards].map(card => card.fields)}
+  tagline={`${featuresContent[0]['fields']['titleBlock']['fields']['tagline']}`}
+  title={`${featuresContent[0]['fields']['titleBlock']['fields']['title']}`}
+  subtitle={`${featuresContent[0]['fields']['titleBlock']['fields']['subtitle']}`}
+  items={[...featuresContent[0]['fields']['cards']].map(card => card['fields'])}
   image={{
     src: 'https://images.ctfassets.net/7g58dl79e6zy/5nSGprH9KWchvi2TbiYRMV/414528b5e52b1df799d2538158afc0e5/development-process.png',
     alt: DevelopmentProcess.fields.alt,
@@ -160,22 +160,22 @@ const faqContent = landingPageContent.items[0].fields.faq;
   <!-- Client Success Widget *************** -->
 
   <ClientSuccess
-  title={`${featuresContent[1].fields.titleBlock.fields.title}`}
-  subtitle={`${featuresContent[1].fields.titleBlock.fields.subtitle}`}
+  title={`${featuresContent[1]['fields']['titleBlock']['fields']['title']}`}
+  subtitle={`${featuresContent[1]['fields']['titleBlock']['fields']['subtitle']}`}
     columns={2}
-    items={[...featuresContent[1].fields.cards].map(card => card.fields)}
+    items={[...featuresContent[1]['fields']['cards']].map(card => card['fields'])}
   />
   
   <!-- Client Stats Widget *************** -->
 
-  <ClientStats stats={[...featuresContent[2].fields.cards].map(card => card.fields)} />
+  <ClientStats stats={[...featuresContent[2]['fields']['cards']].map(card => card['fields'])} />
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     id="faq"
-    title={`${faqContent.fields.titleBlock.fields.title}`}
-    items={[...faqContent.fields.cards].map(card => card.fields)}
+    title={`${faqContent['fields']['titleBlock']['fields']['title']}`}
+    items={[...faqContent['fields']['cards']].map(card => card['fields'])}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
