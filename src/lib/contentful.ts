@@ -32,6 +32,8 @@ export interface LandingPage {
     services: Array<Component>;
     features: Array<Component>;
     faq: Component;
+    contact: Component;
+    blog: Component;
   };
 };
 
