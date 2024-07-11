@@ -21,7 +21,7 @@ export interface LandingPage {
     services: Array<Component>;
     features: Array<Component>;
     faq: Component;
-    contact: Component;
+    contactUs: Array<Component>;
     blog: Component;
   };
 };
