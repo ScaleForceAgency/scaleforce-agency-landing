@@ -39,7 +39,6 @@ const heroContent = landingPageContent.items[0].fields.hero;
 const servicesContent = landingPageContent.items[0].fields.services;
 const featuresContent = landingPageContent.items[0].fields.features;
 const faqContent = landingPageContent.items[0].fields.faq;
-const contactContent = landingPageContent.items[0].fields.contact;
 const contactUsContent = landingPageContent.items[0].fields.contactUs;
 const blogContent = landingPageContent.items[0].fields.blog;
 
@@ -51,7 +50,7 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  
+
   <!-- Hero Widget ******************* -->
    
   <Hero
@@ -189,14 +188,14 @@ const metadata = {
 
   <Contact
     id="contact"
-    title={`${contactContent['fields']['titleBlock']['fields']['title']}`}
-    subtitle={`${contactContent['fields']['titleBlock']['fields']['subtitle']}`}
+    title={`${contactUsContent[0]['fields']['titleBlock']['fields']['title']}`}
+    subtitle={`${contactUsContent[0]['fields']['titleBlock']['fields']['subtitle']}`}
     callToAction={{
-      text: `${contactContent['fields']['cards'][0]['fields']['title']}`,
+      text: `${contactUsContent[0]['fields']['cards'][0]['fields']['title']}`,
       // TODO; create contact form
-      href: `${contactContent['fields']['cards'][0]['fields']['description']}`,
+      href: `${contactUsContent[0]['fields']['cards'][0]['fields']['description']}`,
     }}
-    items={[...contactContent['fields']['cards']].slice(1).map(card => card['fields'])}
+    items={[...contactUsContent[0]['fields']['cards']].slice(1).map(card => card['fields'])}
   />
 
   <!-- Locations Widget ************** -->
