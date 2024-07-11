@@ -29,8 +29,8 @@ export interface LandingPage {
     identifier: EntryFieldTypes.Text;
     metadata: Metadata;
     hero: Component;
-    services: Component[];
-    features: Component[];
+    services: Array<Component>;
+    features: Array<Component>;
     faq: Component;
   };
 };
@@ -78,7 +78,7 @@ interface Component {
     identifier: EntryFieldTypes.Text;
     sectionHeader: TitleBlock;
     titleBlockContent: TitleBlock;
-    cards: Card[] | FaqCard[];
+    cards: Array<Card> | Array<FaqCard>;
   }
 };
 
