@@ -8,7 +8,6 @@ import DevProcess from '~/components/widgets/Steps.astro';
 import ClientSuccess from '~/components/widgets/Features.astro';
 import ClientStats from '~/components/widgets/Stats.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-// import CallToAction from '~/components/widgets/CallToAction.astro';
 import Contact from '~/components/widgets/Steps2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
@@ -45,8 +44,6 @@ const heroContent = landingPageContent.items[0].fields.hero;
 const servicesContent = landingPageContent.items[0].fields.services;
 const featuresContent = landingPageContent.items[0].fields.features;
 const faqContent = landingPageContent.items[0].fields.faq;
-
-console.log(images.items[0].fields.file['fields']['file']['url'])
 ---
 
 <Layout metadata={metadata}>
@@ -183,29 +180,6 @@ console.log(images.items[0].fields.file['fields']['file']['url'])
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </FAQs>
-
-  <!-- Call To Action Widget *********** -->
-
-  <!-- <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction> -->
 
   <!-- Contact Widget ****************** -->
 
