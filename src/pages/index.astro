@@ -22,9 +22,9 @@ const metadata = {
   ignoreTitleTemplate: true,
 };
 
-// // Fetch records from Contentful
+// Fetch records from Contentful
 import { contentfulClient } from "../lib/contentful";
-// import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+// TODO: // import { documentToHtmlString } from "@contentful/rich-text-html-renderer"; 
 import type { LandingImage, LandingPage } from '../lib/contentful';
 
 const images = await contentfulClient.getEntries<LandingImage>({
