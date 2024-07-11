@@ -16,7 +16,6 @@ import { getPermalink } from '../utils/permalinks';
 import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 
 // Fetch records from Airtable
-// const images = await fetchRecords('tbloYsMufgsZtzC1K');
 const pageContent = await fetchRecords('tblZ51CnMzxuJf5mN');
 
 const metadata = {
@@ -24,35 +23,28 @@ const metadata = {
   ignoreTitleTemplate: true,
 };
 
-// // Fetch images from Contentful
+// // Fetch records from Contentful
 import { contentfulClient } from "../lib/contentful";
 // import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import type { EntryFieldTypes } from "contentful";
+import type { LandingImage, LandingPage } from '../lib/contentful';
 
-interface LandingImageFile {
-  fields: {
-    file: {
-      url: EntryFieldTypes.Text
-    }
-  }
-}
-
-interface LandingImage {
-  contentTypeId: "image";
-  fields: {
-    title: EntryFieldTypes.Text;
-    alt: EntryFieldTypes.Text;
-    file: LandingImageFile;
-  }
-}
-const entries = await contentfulClient.getEntries<LandingImage>({
+const images = await contentfulClient.getEntries<LandingImage>({
   content_type: "image",
+  include: 10, // TODO: probably should be less than 10
 });
-const AiSummarizerAgent = entries.items[0];
-const AiVoiceAgent = entries.items[1];
-const AiAgentSwarm = entries.items[2];
-const DevelopmentProcess = entries.items[3];
+const AiSummarizerAgent = images.items[0];
+const AiVoiceAgent = images.items[1];
+const AiAgentSwarm = images.items[2];
+const DevelopmentProcess = images.items[3];
 
+const landingPageContent = await contentfulClient.getEntries<LandingPage>({
+  content_type: "landingPage",
+  include: 10, // TODO: probably should be less than 10
+});
+const heroContent = landingPageContent.items[0].fields.hero;
+const servicesContent = landingPageContent.items[0].fields.services;
+const featuresContent = landingPageContent.items[0].fields.features;
+const faqContent = landingPageContent.items[0].fields.faq;
 ---
 
 <Layout metadata={metadata}>
@@ -61,11 +53,11 @@ const DevelopmentProcess = entries.items[3];
    
   <Hero
   id="welcome"
-    title=`${pageContent[1].title}`
-    subtitle=`${pageContent[1].description}`
+    title=`${heroContent.fields.titleBlock.fields.title}`
+    subtitle=`${heroContent.fields.titleBlock.fields.subtitle}`
     actions={[
-      { variant: 'primary', text: `${pageContent[2].title}`, href: getPermalink(`${pageContent[2].description}`), icon: 'tabler:square-rounded-arrow-right' },
-      { text: `${pageContent[3].title}`, href: getPermalink(`${pageContent[3].description}`) },
+      { variant: 'primary', text: `${heroContent.fields.cards[0].fields.title}`, href: getPermalink(`${heroContent.fields.cards[0].fields.description}`), icon: `${heroContent.fields.cards[0].fields.icon}` },
+      { text: `${heroContent.fields.cards[1].fields.title}`, href: getPermalink(`${heroContent.fields.cards[1].fields.description}`) },
     ]}
   />
 
@@ -74,9 +66,9 @@ const DevelopmentProcess = entries.items[3];
   <AiServicesPanel
     id='services'
     isReversed
-    tagline={`${pageContent[4].description}`}
-    title={`${pageContent[4].title}`}
-    items={[...pageContent].slice(6,10)}
+    tagline={`${servicesContent[0].fields.sectionHeader.fields.tagline}`}
+    title={`${servicesContent[0].fields.sectionHeader.fields.title}`}
+    items={[...servicesContent[0].fields.cards].map(card => card.fields)}
     image={{
       src: 'https://images.ctfassets.net/7g58dl79e6zy/2SpFfcGBPLiJ5BNsKrEXkk/a2011ec94b22fe293f1cd8defac122d2/ai-summarizer-agent.png',
       alt: AiSummarizerAgent.fields.alt,
@@ -84,9 +76,9 @@ const DevelopmentProcess = entries.items[3];
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${pageContent[5].title}`}
+        {`${servicesContent[0].fields.titleBlock.fields.title}`}
       </h3>
-      {`${pageContent[5].description}`}
+      {`${servicesContent[0].fields.titleBlock.fields.subtitle}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -98,7 +90,7 @@ const DevelopmentProcess = entries.items[3];
 
   <AiServicesPanel
     isAfterContent
-    items={[...pageContent].slice(11,15)}
+    items={[...servicesContent[1].fields.cards].map(card => card.fields)}
     image={{
       src: 'https://images.ctfassets.net/7g58dl79e6zy/Wrbd82xoTsBC73B5fehXm/e7a29c128632de2e9b9a35e6aadbde01/ai-voice-agent.png',
       alt: AiVoiceAgent.fields.alt,
@@ -106,9 +98,9 @@ const DevelopmentProcess = entries.items[3];
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${pageContent[10].title}`}
+        {`${servicesContent[1].fields.titleBlock.fields.title}`}
       </h3>
-      {`${pageContent[10].description}`}
+      {`${servicesContent[1].fields.titleBlock.fields.subtitle}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -121,7 +113,7 @@ const DevelopmentProcess = entries.items[3];
   <AiServicesPanel
     isReversed
     isAfterContent
-    items={[...pageContent].slice(16,20)}
+    items={[...servicesContent[2].fields.cards].map(card => card.fields)}
     image={{
       src: 'https://images.ctfassets.net/7g58dl79e6zy/7f0vEO9M2v8HjkoHxBUoxU/088afbce684c618237b732e28fad94c4/ai-agent-swarm.png',
       alt: AiAgentSwarm.fields.alt,
@@ -129,9 +121,9 @@ const DevelopmentProcess = entries.items[3];
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${pageContent[15].title}`}
+        {`${servicesContent[2].fields.titleBlock.fields.title}`}
       </h3>
-      {`${pageContent[15].description}`}
+      {`${servicesContent[2].fields.titleBlock.fields.subtitle}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -142,9 +134,9 @@ const DevelopmentProcess = entries.items[3];
   <!-- Standard Offerings Widget *************** -->
 
   <StandardServices
-    title={`${pageContent[20].title}`}
-    subtitle={`${pageContent[20].description}`}
-    items={[...pageContent].slice(21,30)}
+    title={`${servicesContent[3].fields.titleBlock.fields.title}`}
+    subtitle={`${servicesContent[3].fields.titleBlock.fields.subtitle}`}
+    items={[...servicesContent[3].fields.cards].map(card => card.fields)}
   >
   <Fragment slot="bg">
     <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -155,10 +147,10 @@ const DevelopmentProcess = entries.items[3];
 
   <DevProcess
   id="features"
-  tagline={`${pageContent[30].title}`}
-  title={`${pageContent[31].title}`}
-  subtitle={`${pageContent[31].description}`}
-  items={[...pageContent].slice(32,37)}
+  tagline={`${featuresContent[0].fields.titleBlock.fields.tagline}`}
+  title={`${featuresContent[0].fields.titleBlock.fields.title}`}
+  subtitle={`${featuresContent[0].fields.titleBlock.fields.subtitle}`}
+  items={[...featuresContent[0].fields.cards].map(card => card.fields)}
   image={{
     src: 'https://images.ctfassets.net/7g58dl79e6zy/5nSGprH9KWchvi2TbiYRMV/414528b5e52b1df799d2538158afc0e5/development-process.png',
     alt: DevelopmentProcess.fields.alt,
@@ -168,22 +160,22 @@ const DevelopmentProcess = entries.items[3];
   <!-- Client Success Widget *************** -->
 
   <ClientSuccess
-  title={`${pageContent[37].title}`}
-  subtitle={`${pageContent[37].description}`}
+  title={`${featuresContent[1].fields.titleBlock.fields.title}`}
+  subtitle={`${featuresContent[1].fields.titleBlock.fields.subtitle}`}
     columns={2}
-    items={[...pageContent].slice(38,44)}
+    items={[...featuresContent[1].fields.cards].map(card => card.fields)}
   />
   
   <!-- Client Stats Widget *************** -->
 
-  <ClientStats stats={[...pageContent].slice(45,49)} />
+  <ClientStats stats={[...featuresContent[2].fields.cards].map(card => card.fields)} />
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     id="faq"
-    title={`${pageContent[49].title}`}
-    items={[...pageContent].slice(50,54)}
+    title={`${faqContent.fields.titleBlock.fields.title}`}
+    items={[...faqContent.fields.cards].map(card => card.fields)}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
