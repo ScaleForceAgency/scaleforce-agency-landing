@@ -44,6 +44,8 @@ const heroContent = landingPageContent.items[0].fields.hero;
 const servicesContent = landingPageContent.items[0].fields.services;
 const featuresContent = landingPageContent.items[0].fields.features;
 const faqContent = landingPageContent.items[0].fields.faq;
+const contactContent = landingPageContent.items[0].fields.contact;
+const blogContent = landingPageContent.items[0].fields.blog;
 ---
 
 <Layout metadata={metadata}>
@@ -185,22 +187,22 @@ const faqContent = landingPageContent.items[0].fields.faq;
 
   <Contact
     id="contact"
-    title={`${pageContent[54].title}`}
-    subtitle={`${pageContent[54].description}`}
+    title={`${contactContent['fields']['titleBlock']['fields']['title']}`}
+    subtitle={`${contactContent['fields']['titleBlock']['fields']['subtitle']}`}
     callToAction={{
-      text: `${pageContent[55].title}`,
+      text: `${contactContent['fields']['cards'][0]['fields']['title']}`,
       // TODO; create contact form
-      href: `${pageContent[55].description}`,
+      href: `${contactContent['fields']['cards'][0]['fields']['description']}`,
     }}
-    items={[...pageContent].slice(56,60)}
+    items={[...contactContent['fields']['cards']].slice(1).map(card => card['fields'])}
   />
 
   <!-- Use Cases Blog Widget **************** -->
 
   <BlogLatestPosts
     id="blog"
-    title={`${pageContent[60].title}`}
-    information={`${pageContent[60].description}`}
+    title={`${blogContent['fields']['titleBlock']['fields']['title']}`}
+    information={`${blogContent['fields']['titleBlock']['fields']['subtitle']}`}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
