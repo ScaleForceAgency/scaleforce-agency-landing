@@ -26,14 +26,43 @@ export interface LandingPage {
   };
 };
 
+export interface Tag {
+  contentTypeId: "tag";
+  fields: {
+    name: EntryFieldTypes.Text;
+    description: EntryFieldTypes.Text;
+  };
+};
+
+export interface Category {
+  contentTypeId: "category";
+  fields: {
+    name: EntryFieldTypes.Text;
+    description: EntryFieldTypes.Text;
+    slug: EntryFieldTypes.Text;
+  };
+};
+
+export interface Author {
+  contentTypeId: "author";
+  fields: {
+    name: EntryFieldTypes.Text;
+    description: EntryFieldTypes.Text;
+  };
+};
+
 export interface BlogPost {
   contentTypeId: "blogPost";
   fields: {
-    title: EntryFieldTypes.Text;
-    content: EntryFieldTypes.RichText;
-    date: EntryFieldTypes.Date;
-    description: EntryFieldTypes.Text;
+    publishDate: EntryFieldTypes.Date;
     slug: EntryFieldTypes.Text;
+    title: EntryFieldTypes.Text;
+    author: EntryFieldTypes.Text;
+    category: Category;
+    tags: Array<Tag>;
+    excerpt: EntryFieldTypes.Text;
+    featuredImage: EntryFieldTypes.Text;
+    content: EntryFieldTypes.RichText;
   };
 };
 
@@ -41,6 +70,7 @@ interface Metadata {
   contentTypeId: "metadata";
   fields: {
     identifier: EntryFieldTypes.Text;
+    pageTitle: EntryFieldTypes.Text;
   };
 };
 
