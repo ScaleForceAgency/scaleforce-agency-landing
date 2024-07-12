@@ -37,7 +37,7 @@ console.log(form)
           container: 'text-center md:text-left rtl:md:text-right mb-4 md:mb-8',
           title: 'mb-4 text-3xl lg:text-4xl font-bold font-heading',
           subtitle: 'mb-8 text-xl text-muted dark:text-slate-400',
-          ...((classes?.headline as {}) ?? {}),
+          ...((classes?.headline as NonNullable<unknown>) ?? {}),
         }}
       />
 
@@ -61,7 +61,7 @@ console.log(form)
         }
       </ul>
     </div>
-    <div class="w-full lg:w-1/2 px-0">
+    <div class="w-full lg:w-1/2 px-0 py-20 lg:py-0 ">
       <div class="w-full text-center md:text-left rtl:md:text-right">
         <Headline
           title={form['title']}
@@ -71,7 +71,7 @@ console.log(form)
             container: 'text-center md:text-left rtl:md:text-right mb-4 md:mb-8',
             title: 'mb-4 text-3xl lg:text-4xl font-bold font-heading',
             subtitle: 'mb-8 text-xl text-muted dark:text-slate-400',
-            ...((classes?.headline as {}) ?? {}),
+            ...((classes?.headline as NonNullable<unknown>) ?? {}),
           }}
         />
 
