@@ -20,7 +20,7 @@ export const headerData = {
     },
     {
       text: 'Contact',
-      href: getPermalink('/contact'),
+      href: getPermalink('/#contact'),
     },
     {
       text: 'Blog',

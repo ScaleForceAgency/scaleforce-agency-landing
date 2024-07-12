@@ -1,6 +1,8 @@
 ---
+// Import Layout
 import Layout from '~/layouts/PageLayout.astro';
 
+// Import Components
 import Hero from '~/components/widgets/Hero.astro';
 import AiServicesPanel from '~/components/widgets/Content.astro';
 import StandardServices from '~/components/widgets/Features2.astro';
@@ -8,55 +10,77 @@ import DevProcess from '~/components/widgets/Steps.astro';
 import ClientSuccess from '~/components/widgets/Features.astro';
 import ClientStats from '~/components/widgets/Stats.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-// import CallToAction from '~/components/widgets/CallToAction.astro';
-import Contact from '~/components/widgets/Steps2.astro';
+import Contact from '~/components/widgets/ContactUs.astro';
+import Locations from '~/components/widgets/Features2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
+// Import Utils & Associated Types
 import { getPermalink } from '../utils/permalinks';
-import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
+import { contentfulClient } from "../lib/contentful";
+import type { LandingImage, LandingPage } from '../lib/contentful';
+// TODO: // import { documentToHtmlString } from "@contentful/rich-text-html-renderer"; 
 
-// Fetch records from Airtable
-const images = await fetchRecords('tbloYsMufgsZtzC1K');
-const pageContent = await fetchRecords('tblZ51CnMzxuJf5mN');
+// Fetch images from Contentful
+const images = await contentfulClient.getEntries<LandingImage>({
+  content_type: "image",
+});
+const AiSummarizerAgent = images.items[0];
+const AiVoiceAgent = images.items[1];
+const AiAgentSwarm = images.items[2];
+const DevelopmentProcess = images.items[3];
 
+// Fetch page content from Contentful
+const landingPageContent = await contentfulClient.getEntries<LandingPage>({
+  content_type: "landingPage",
+  include: 2,
+});
+const metadataContent = landingPageContent.items[0].fields.metadata;
+const heroContent = landingPageContent.items[0].fields.hero;
+const servicesContent = landingPageContent.items[0].fields.services;
+const featuresContent = landingPageContent.items[0].fields.features;
+const faqContent = landingPageContent.items[0].fields.faq;
+const contactUsContent = landingPageContent.items[0].fields.contactUs;
+const blogContent = landingPageContent.items[0].fields.blog;
+
+// Declare Page Metadata
 const metadata = {
-  title: `${pageContent[0].title}`,
+  title: `${metadataContent['fields']['pageTitle']}`,
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  
+
   <!-- Hero Widget ******************* -->
    
   <Hero
   id="welcome"
-    title=`${pageContent[1].title}`
-    subtitle=`${pageContent[1].description}`
+    title=`${heroContent['fields']['titleBlock']['fields']['title']}`
+    subtitle=`${heroContent['fields']['titleBlock']['fields']['subtitle']}`
     actions={[
-      { variant: 'primary', text: `${pageContent[2].title}`, href: getPermalink(`${pageContent[2].description}`), icon: 'tabler:square-rounded-arrow-right' },
-      { text: `${pageContent[3].title}`, href: getPermalink(`${pageContent[3].description}`) },
+      { variant: 'primary', text: `${heroContent['fields']['cards'][0]['fields']['title']}`, href: getPermalink(`${heroContent['fields']['cards'][0]['fields']['description']}`), icon: `${heroContent['fields']['cards'][0]['fields']['icon']}` },
+      { text: `${heroContent['fields']['cards'][1]['fields']['title']}`, href: getPermalink(`${heroContent['fields']['cards'][1]['fields']['description']}`) },
     ]}
   />
 
   <!-- AiServicesPanel Widget 1/3 **************** -->
 
   <AiServicesPanel
-    id="services"
+    id='services'
     isReversed
-    tagline={`${pageContent[4].description}`}
-    title={`${pageContent[4].title}`}
-    items={[...pageContent].slice(6,10)}
+    tagline={`${servicesContent[0]['fields']['sectionHeader']['fields']['tagline']}`}
+    title={`${servicesContent[0]['fields']['sectionHeader']['fields']['title']}`}
+    items={[...servicesContent[0]['fields']['cards']].map(card => card['fields'])}
     image={{
-      src: images[0].file[0].url,
-      alt: images[0].alt,
+      src: AiSummarizerAgent.fields.file['fields']['file']['url'],
+      alt: AiSummarizerAgent.fields.alt,
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${pageContent[5].title}`}
+        {`${servicesContent[0]['fields']['titleBlock']['fields']['title']}`}
       </h3>
-      {`${pageContent[5].description}`}
+      {`${servicesContent[0]['fields']['titleBlock']['fields']['subtitle']}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -68,17 +92,17 @@ const metadata = {
 
   <AiServicesPanel
     isAfterContent
-    items={[...pageContent].slice(11,15)}
+    items={[...servicesContent[1]['fields']['cards']].map(card => card['fields'])}
     image={{
-      src: images[1].file[0].url,
-      alt: images[1].alt,
+      src: AiVoiceAgent.fields.file['fields']['file']['url'],
+      alt: AiVoiceAgent.fields.alt,
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${pageContent[10].title}`}
+        {`${servicesContent[1]['fields']['titleBlock']['fields']['title']}`}
       </h3>
-      {`${pageContent[10].description}`}
+      {`${servicesContent[1]['fields']['titleBlock']['fields']['subtitle']}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -91,17 +115,17 @@ const metadata = {
   <AiServicesPanel
     isReversed
     isAfterContent
-    items={[...pageContent].slice(16,20)}
+    items={[...servicesContent[2]['fields']['cards']].map(card => card['fields'])}
     image={{
-      src: images[2].file[0].url,
-      alt: images[2].alt,
+      src: AiAgentSwarm.fields.file['fields']['file']['url'],
+      alt: AiAgentSwarm.fields.alt,
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        {`${pageContent[15].title}`}
+        {`${servicesContent[2]['fields']['titleBlock']['fields']['title']}`}
       </h3>
-      {`${pageContent[15].description}`}
+      {`${servicesContent[2]['fields']['titleBlock']['fields']['subtitle']}`}
     </Fragment>
 
     <Fragment slot="bg">
@@ -112,9 +136,9 @@ const metadata = {
   <!-- Standard Offerings Widget *************** -->
 
   <StandardServices
-    title={`${pageContent[20].title}`}
-    subtitle={`${pageContent[20].description}`}
-    items={[...pageContent].slice(21,30)}
+    title={`${servicesContent[3]['fields']['titleBlock']['fields']['title']}`}
+    subtitle={`${servicesContent[3]['fields']['titleBlock']['fields']['subtitle']}`}
+    items={[...servicesContent[3]['fields']['cards']].map(card => card['fields'])}
   >
   <Fragment slot="bg">
     <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -125,84 +149,104 @@ const metadata = {
 
   <DevProcess
   id="features"
-  tagline={`${pageContent[30].title}`}
-  title={`${pageContent[31].title}`}
-  subtitle={`${pageContent[31].description}`}
-  items={[...pageContent].slice(32,37)}
+  tagline={`${featuresContent[0]['fields']['titleBlock']['fields']['tagline']}`}
+  title={`${featuresContent[0]['fields']['titleBlock']['fields']['title']}`}
+  subtitle={`${featuresContent[0]['fields']['titleBlock']['fields']['subtitle']}`}
+  items={[...featuresContent[0]['fields']['cards']].map(card => card['fields'])}
   image={{
-    src: images[3].file[0].url,
-    alt: images[3].alt,
+    src: DevelopmentProcess.fields.file['fields']['file']['url'],
+    alt: DevelopmentProcess.fields.alt,
   }}
 />
 
   <!-- Client Success Widget *************** -->
 
   <ClientSuccess
-  title={`${pageContent[37].title}`}
-  subtitle={`${pageContent[37].description}`}
+  title={`${featuresContent[1]['fields']['titleBlock']['fields']['title']}`}
+  subtitle={`${featuresContent[1]['fields']['titleBlock']['fields']['subtitle']}`}
     columns={2}
-    items={[...pageContent].slice(38,44)}
+    items={[...featuresContent[1]['fields']['cards']].map(card => card['fields'])}
   />
   
   <!-- Client Stats Widget *************** -->
 
-  <ClientStats stats={[...pageContent].slice(45,49)} />
+  <ClientStats stats={[...featuresContent[2]['fields']['cards']].map(card => card['fields'])} />
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     id="faq"
-    title={`${pageContent[49].title}`}
-    items={[...pageContent].slice(50,54)}
+    title={`${faqContent['fields']['titleBlock']['fields']['title']}`}
+    items={[...faqContent['fields']['cards']].map(card => card['fields'])}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </FAQs>
 
-  <!-- Call To Action Widget *********** -->
-
-  <!-- <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction> -->
-
   <!-- Contact Widget ****************** -->
 
   <Contact
     id="contact"
-    title={`${pageContent[54].title}`}
-    subtitle={`${pageContent[54].description}`}
-    callToAction={{
-      text: `${pageContent[55].title}`,
-      // TODO; create contact form
-      href: `${pageContent[55].description}`,
+    tagline={`${contactUsContent[0]['fields']['titleBlock']['fields']['tagline']}`}
+    title={`${contactUsContent[0]['fields']['titleBlock']['fields']['title']}`}
+    subtitle={`${contactUsContent[0]['fields']['titleBlock']['fields']['subtitle']}`}
+    items={[...contactUsContent[0]['fields']['cards']].slice(1).map(card => card['fields'])}
+    form={{
+      title: 'Drop us a message',
+      inputs: [
+        {
+          type: 'text',
+          name: 'name',
+          label: 'Name',
+          placeholder: 'John Smith',
+        },
+        {
+          type: 'email',
+          name: 'email',
+          label: 'Email',
+          placeholder: 'john.smith@example.com',
+        },
+        {
+          type: 'text',
+          name: 'company',
+          label: 'Company',
+          placeholder: 'Red Mountain Metal Works',
+        },
+        {
+          type: 'text',
+          name: 'location',
+          label: 'Location',
+          placeholder: 'Aspen, CO',
+        },
+      ],
+      textarea: {
+        label: 'Message',
+        placeholder: 'Hello,\n\nI\'d like to inquire about using an AI voice agent to answer the phone at my shop...',
+      },
+      disclaimer: {
+        label:
+          'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+      },
+      description: 'Our support team typically responds within 24 business hours.',
     }}
-    items={[...pageContent].slice(56,60)}
+  />
+
+  <!-- Locations Widget ************** -->
+
+  <Locations
+    id="locations"
+    title={`${contactUsContent[1]['fields']['titleBlock']['fields']['title']}`}
+    items={[...contactUsContent[1]['fields']['cards']].map(card => card['fields'])}
+    columns={4}
   />
 
   <!-- Use Cases Blog Widget **************** -->
 
   <BlogLatestPosts
     id="blog"
-    title={`${pageContent[60].title}`}
-    information={`${pageContent[60].description}`}
+    title={`${blogContent['fields']['titleBlock']['fields']['title']}`}
+    information={`${blogContent['fields']['titleBlock']['fields']['subtitle']}`}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>

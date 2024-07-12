@@ -1,16 +1,29 @@
 ---
+// Import Layout
 import Layout from '~/layouts/PageLayout.astro';
+
+// Import Components
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Calendly from '~/components/widgets/Calendly.astro';
 
+// // Import Utils & Associated Types
+// import { contentfulClient } from "../lib/contentful";
+// import type { ContactPage } from '../lib/contentful';
+
+// // Fetch page content from Contentful
+// const contactPageContent = await contentfulClient.getEntries<ContactPage>({
+//   content_type: "contactPage",
+//   include: 2,
+// });
+
 import { fetchRecords } from '../integrations/astro-airtable/astro-airtable';
 // Fetch records from Airtable
-const contactPageContent = await fetchRecords('tblp5aKVIReTS7nLu');
+const contactPageAirtableContent = await fetchRecords('tblp5aKVIReTS7nLu');
 
 const metadata = {
-  title: `${contactPageContent[0].title}`,
+  title: `${contactPageAirtableContent[0].title}`,
 };
 ---
 
@@ -18,32 +31,47 @@ const metadata = {
 
   <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline={`${contactPageContent[1].description}`} title={`${contactPageContent[1].title}`} />
+  <HeroText tagline={`${contactPageAirtableContent[1].description}`} title={`${contactPageAirtableContent[1].title}`} />
 
   <!-- Calendly Widget -->
 
-  <Calendly id="calendly" class="min-h-screen"/>
+  <Calendly id="calendly" />
 
   <!-- Contact Form Widget -->
 
   <ContactUs
     id="form"
-    title={`${contactPageContent[2].title}`}
-    subtitle={`${contactPageContent[2].description}`}
+    title={`${contactPageAirtableContent[2].title}`}
+    subtitle={`${contactPageAirtableContent[2].description}`}
     inputs={[
       {
         type: 'text',
         name: 'name',
         label: 'Name',
+        placeholder: 'John Smith',
       },
       {
         type: 'email',
         name: 'email',
         label: 'Email',
+        placeholder: 'john.smith@example.com',
+      },
+      {
+        type: 'text',
+        name: 'company',
+        label: 'Company',
+        placeholder: 'Red Mountain Metal Works',
+      },
+      {
+        type: 'text',
+        name: 'location',
+        label: 'Location',
+        placeholder: 'Aspen, CO',
       },
     ]}
     textarea={{
       label: 'Message',
+      placeholder: 'Hello,\n\nI\'d like to inquire about using an AI voice agent to answer the phone at my shop...',
     }}
     disclaimer={{
       label:
@@ -55,25 +83,25 @@ const metadata = {
   <!-- Contact Info Widget ************** -->
 
   <Features2
-    title={`${contactPageContent[11].title}`}
-    items={[...contactPageContent].slice(12,18)}
+    title={`${contactPageAirtableContent[11].title}`}
+    items={[...contactPageAirtableContent].slice(12,18)}
   />
 
   <!-- Locations Widget ************** -->
 
   <Features2
-    title={`${contactPageContent[18].title}`}
-    tagline={`${contactPageContent[18].description}`}
+    title={`${contactPageAirtableContent[18].title}`}
+    tagline={`${contactPageAirtableContent[18].description}`}
     columns={4}
-    items={[...contactPageContent].slice(19,23)}
+    items={[...contactPageAirtableContent].slice(19,23)}
   />
 
   <!-- Tech Support Widget ************** -->
 
   <Features2
-    title={`${contactPageContent[23].title}`}
-    tagline={`${contactPageContent[23].description}`}
+    title={`${contactPageAirtableContent[23].title}`}
+    tagline={`${contactPageAirtableContent[23].description}`}
     columns={2}
-    items={[...contactPageContent].slice(24,26)}
+    items={[...contactPageAirtableContent].slice(24,26)}
   />
 </Layout>

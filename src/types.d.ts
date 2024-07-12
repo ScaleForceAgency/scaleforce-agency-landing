@@ -136,6 +136,8 @@ export interface Item {
   title?: string;
   description?: string;
   icon?: string;
+  question?: string;
+  answer?: string;
   classes?: Record<string, string>;
   callToAction?: CallToAction;
   image?: Image;
@@ -212,6 +214,14 @@ export interface Form {
   description?: string;
 }
 
+export interface ContactUsForm extends Omit<Headline, 'classes'>{
+  inputs?: Array<Input>;
+  textarea?: Textarea;
+  disclaimer?: Disclaimer;
+  button?: string;
+  description?: string;
+}
+
 // WIDGETS
 export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' | 'classes'> {
   content?: string;
@@ -279,3 +289,9 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+
+export interface ContactUs extends Omit<Headline, 'classes'>, Widget {
+  items: Array<Item>;
+  isReversed?: boolean;
+  form: ContactUsForm;
+}
