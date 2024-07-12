@@ -48,7 +48,7 @@ export const headerData = {
       ],
     },
   ],
-  actions: [{ text: 'Book a call', href: getPermalink('/#calendly') }],
+  actions: [{ text: 'Book a call', href: getPermalink('/#contact') }],
 };
 
 export const footerData = {
@@ -59,23 +59,26 @@ export const footerData = {
         { text: 'Services', href: getPermalink('/#services') },
         { text: 'Features', href: getPermalink('/#features') },
         { text: 'FAQ', href: getPermalink('/#faq') },
-        // { text: 'Customer stories', href: '#' },
-        // { text: 'Pricing', href: '#' },
-        // { text: 'Resources', href: '#' },
+      ],
+    },
+    {
+        title: 'Blog',
+      links: [
+        { text: 'List', href: getPermalink('/') },
+        { text: 'Categories', href: getPermalink('/') },
+        { text: 'Tags', href: getPermalink('/') },
       ],
     },
     {
       title: 'Company',
       links: [
-        { text: 'Locations', href: '#' },
-        { text: 'About', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
+        { text: 'Locations', href: '#locations' },
+        { text: 'Careers', href: '/' },
+        { text: 'Press', href: '/' },
       ],
     },
-    // TODO: optimize this once everything else is
     // {
-      //   title: 'Support',
+    //     title: 'Support',
     //   links: [
     //     { text: 'Docs', href: getPermalink('/') },
     //     { text: 'Status', href: getPermalink('/') },
@@ -100,9 +103,27 @@ export const footerData = {
     // { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
     // { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
     // { ariaLabel: 'YouTube', icon: 'tabler:brand-youtube', href: '#' },
-    { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/ScaleForceAgency' },
+    { 
+      ariaLabel: 'LinkedIn',
+      icon: 'tabler:brand-linkedin',
+      href: 'https://www.linkedin.com/company/scaleforce-agency',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    { 
+      ariaLabel: 'RSS',
+      icon: 'tabler:rss',
+      href: getAsset('/rss.xml'),
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    { 
+      ariaLabel: 'Github',
+      icon: 'tabler:brand-github',
+      href: 'https://github.com/ScaleForceAgency',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
   ],
   footNote: `
     Made by <a class="text-blue-600 underline dark:text-muted" href="https://scaleforce.agency/"> ScaleForce</a> · All rights reserved.
