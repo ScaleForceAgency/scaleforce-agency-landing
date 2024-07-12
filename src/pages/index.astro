@@ -10,7 +10,7 @@ import DevProcess from '~/components/widgets/Steps.astro';
 import ClientSuccess from '~/components/widgets/Features.astro';
 import ClientStats from '~/components/widgets/Stats.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Contact from '~/components/widgets/Steps2.astro';
+import Contact from '~/components/widgets/ContactUs.astro';
 import Locations from '~/components/widgets/Features2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
@@ -188,23 +188,57 @@ const metadata = {
 
   <Contact
     id="contact"
+    tagline={`${contactUsContent[0]['fields']['titleBlock']['fields']['tagline']}`}
     title={`${contactUsContent[0]['fields']['titleBlock']['fields']['title']}`}
     subtitle={`${contactUsContent[0]['fields']['titleBlock']['fields']['subtitle']}`}
-    callToAction={{
-      text: `${contactUsContent[0]['fields']['cards'][0]['fields']['title']}`,
-      // TODO; create contact form
-      href: `${contactUsContent[0]['fields']['cards'][0]['fields']['description']}`,
-    }}
     items={[...contactUsContent[0]['fields']['cards']].slice(1).map(card => card['fields'])}
+    form={{
+      title: 'Drop us a message',
+      inputs: [
+        {
+          type: 'text',
+          name: 'name',
+          label: 'Name',
+          placeholder: 'John Smith',
+        },
+        {
+          type: 'email',
+          name: 'email',
+          label: 'Email',
+          placeholder: 'john.smith@example.com',
+        },
+        {
+          type: 'text',
+          name: 'company',
+          label: 'Company',
+          placeholder: 'Red Mountain Metal Works',
+        },
+        {
+          type: 'text',
+          name: 'location',
+          label: 'Location',
+          placeholder: 'Aspen, CO',
+        },
+      ],
+      textarea: {
+        label: 'Message',
+        placeholder: 'Hello,\n\nI\'d like to inquire about using an AI voice agent to answer the phone at my shop...',
+      },
+      disclaimer: {
+        label:
+          'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+      },
+      description: 'Our support team typically responds within 24 business hours.',
+    }}
   />
 
   <!-- Locations Widget ************** -->
 
   <Locations
+    id="locations"
     title={`${contactUsContent[1]['fields']['titleBlock']['fields']['title']}`}
-    tagline={`${contactUsContent[1]['fields']['titleBlock']['fields']['subtitle']}`}
-    columns={4}
     items={[...contactUsContent[1]['fields']['cards']].map(card => card['fields'])}
+    columns={4}
   />
 
   <!-- Use Cases Blog Widget **************** -->
