@@ -61,7 +61,7 @@ export interface BlogPost {
     category: Category;
     tags: Array<Tag>;
     excerpt: EntryFieldTypes.Text;
-    featuredImage: EntryFieldTypes.Text;
+    featuredImage: Asset;
     content: EntryFieldTypes.RichText;
   };
 };
