@@ -3,40 +3,6 @@
 import contentful from "contentful";
 import type { EntryFieldTypes, Asset } from "contentful";
 
-export interface LandingImage {
-  contentTypeId: "image";
-  fields: {
-    title: EntryFieldTypes.Text;
-    alt: EntryFieldTypes.Text;
-    file: Asset;
-  };
-};
-
-export interface LandingPage {
-  contentTypeId: "landingPage";
-  fields: {
-    identifier: EntryFieldTypes.Text;
-    metadata: Metadata;
-    hero: Component;
-    services: Array<Component>;
-    features: Array<Component>;
-    faq: Component;
-    contactUs: Array<Component>;
-    blog: Component;
-  };
-};
-
-export interface BlogPost {
-  contentTypeId: "blogPost";
-  fields: {
-    title: EntryFieldTypes.Text;
-    content: EntryFieldTypes.RichText;
-    date: EntryFieldTypes.Date;
-    description: EntryFieldTypes.Text;
-    slug: EntryFieldTypes.Text;
-  };
-};
-
 interface Metadata {
   contentTypeId: "metadata";
   fields: {
@@ -81,6 +47,46 @@ interface Component {
     sectionHeader: TitleBlock;
     titleBlockContent: TitleBlock;
     cards: Array<Card> | Array<FaqCard>;
+  };
+};
+
+export interface LandingPage {
+  contentTypeId: "landingPage";
+  fields: {
+    identifier: EntryFieldTypes.Text;
+    metadata: Metadata;
+    hero: Component;
+    services: Array<Component>;
+    features: Array<Component>;
+    faq: Component;
+    contactUs: Array<Component>;
+    blog: Component;
+  };
+};
+
+export interface LandingImage {
+  contentTypeId: "image";
+  fields: {
+    title: EntryFieldTypes.Text;
+    alt: EntryFieldTypes.Text;
+    file: Asset;
+  };
+};
+
+export interface BlogPost {
+  contentTypeId: "blogPost";
+  fields: {
+    publishDate: EntryFieldTypes.Date;
+    slug: EntryFieldTypes.Text;
+    title: EntryFieldTypes.Text;
+    author: unknown;
+    category: unknown;
+    tags: unknown;
+    excerpt: EntryFieldTypes.Text;
+    featuredImage: unknown;
+    content: EntryFieldTypes.RichText;
+    relatedBlogPosts: unknown;
+    videoGallery: EntryFieldTypes.Text;
   };
 };
 
