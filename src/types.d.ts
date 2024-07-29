@@ -5,43 +5,50 @@ export interface Post {
   /** A unique ID number that identifies a post. */
   id: string;
 
+  /**  */
+  metadata?: MetaData;
+
   /** A post’s unique slug – part of the post’s URL based on its name, i.e. a post called “My Sample Page” has a slug “my-sample-page”. */
   slug: string;
 
   /**  */
-  permalink: string;
+  title: string;
+
+  /** Optional summary of post content. */
+  excerpt?: string;
 
   /**  */
-  publishDate: Date;
+  permalink?: string;
+
+  /**  */
+  author?: string;
+  
+  /**  */
+  publishDate: string;
   /**  */
   updateDate?: Date;
 
   /**  */
-  title: string;
-  /** Optional summary of post content. */
-  excerpt?: string;
-  /**  */
-  image?: ImageMetadata | string;
+  featuredImage?: ImageMetadata | string;
 
   /**  */
   category?: Taxonomy;
   /**  */
   tags?: Taxonomy[];
-  /**  */
-  author?: string;
-
-  /**  */
-  metadata?: MetaData;
 
   /**  */
   draft?: boolean;
 
   /**  */
-  Content?: AstroComponentFactory;
   content?: string;
+  Content?: AstroComponentFactory;
 
   /**  */
   readingTime?: number;
+  
+  /** other firelds from Contentful */
+  identifier?: string;
+  relatedBlogPosts?: unknown;
 }
 
 export interface Taxonomy {
