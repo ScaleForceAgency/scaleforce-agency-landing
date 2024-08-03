@@ -76,17 +76,19 @@ export interface LandingImage {
 export interface BlogPost {
   contentTypeId: "blogPost";
   fields: {
-    slug: EntryFieldTypes.Text;
+    identifier: EntryFieldTypes.Text;
+    slug?: EntryFieldTypes.Text;
+    permalink: EntryFieldTypes.Text;
     title: EntryFieldTypes.Text;
     excerpt: EntryFieldTypes.Text;
-    author?: unknown;
+    author?: EntryFieldTypes.Text;
+    featuredImage?: LandingImage;
     publishDate: EntryFieldTypes.Text;
-    featuredImage: unknown;
     category?: unknown;
     tags?: unknown;
     content: EntryFieldTypes.RichText;
     relatedBlogPosts?: unknown;
-    videoGallery?: unknown;
+    videoGallery?: Array<Asset>;
   };
 };
 
