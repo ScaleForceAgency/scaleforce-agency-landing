@@ -82,7 +82,7 @@ export interface BlogPost {
     title: EntryFieldTypes.Text;
     excerpt: EntryFieldTypes.Text;
     author?: EntryFieldTypes.Text;
-    featuredImage?: LandingImage;
+    image?: LandingImage;
     publishDate: EntryFieldTypes.Text;
     category?: unknown;
     tags?: unknown;
