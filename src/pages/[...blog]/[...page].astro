@@ -34,18 +34,6 @@ const metadata = {
   },
 };
 
-/////////////////////////////////////////////////
-
-import { contentfulClient } from "../../lib/contentful";
-// import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import type { BlogPost } from "../../lib/contentful.ts";
-
-const entries = await contentfulClient.getEntries<BlogPost>({
-  content_type: "blogPost",
-  include: 2,
-});
-const pastas = entries.items.map(post => { return post.fields })
-// console.log(pastas)
 ---
 
 <Layout metadata={metadata}>
@@ -55,8 +43,7 @@ const pastas = entries.items.map(post => { return post.fields })
     >
       Dare to Imagine: Use Cases for Unleashing the Power of AI
     </Headline>
-    <!-- <BlogList posts={page.data} /> -->
-    <BlogList posts={pastas} />
+    <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
     <!--
       <PostTags tags={allCategories} class="mb-2" title="Search by Categories:" isCategory />
