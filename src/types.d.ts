@@ -3,14 +3,14 @@ import type { HTMLAttributes, ImageMetadata } from 'astro/types';
 
 export interface Post {
   /** A unique ID number that identifies a post. */
-  id?: string;
+  id: string;
 
   /** A post’s unique slug – part of the post’s URL based on its name, i.e. a post called “My Sample Page” has a slug “my-sample-page”. */
   slug: string;
 
   /**  */
-  permalink?: string;
-  
+  permalink: string;
+
   /**  */
   publishDate: Date;
   /**  */
@@ -31,21 +31,17 @@ export interface Post {
   author?: string;
 
   /**  */
-  draft?: boolean;
-
-  /**  */
   metadata?: MetaData;
 
   /**  */
-  content?: any;
+  draft?: boolean;
+
+  /**  */
   Content?: AstroComponentFactory;
+  content?: string;
 
   /**  */
   readingTime?: number;
-  
-  /**  */
-  data: object;
-  relatedBlogPosts?: unknown;
 }
 
 export interface Taxonomy {
