@@ -26,43 +26,14 @@ export interface LandingPage {
   };
 };
 
-export interface Tag {
-  contentTypeId: "tag";
-  fields: {
-    name: EntryFieldTypes.Text;
-    description: EntryFieldTypes.Text;
-  };
-};
-
-export interface Category {
-  contentTypeId: "category";
-  fields: {
-    name: EntryFieldTypes.Text;
-    description: EntryFieldTypes.Text;
-    slug: EntryFieldTypes.Text;
-  };
-};
-
-export interface Author {
-  contentTypeId: "author";
-  fields: {
-    name: EntryFieldTypes.Text;
-    description: EntryFieldTypes.Text;
-  };
-};
-
 export interface BlogPost {
   contentTypeId: "blogPost";
   fields: {
-    publishDate: EntryFieldTypes.Date;
-    slug: EntryFieldTypes.Text;
     title: EntryFieldTypes.Text;
-    author: EntryFieldTypes.Text;
-    category: Category;
-    tags: Array<Tag>;
-    excerpt: EntryFieldTypes.Text;
-    featuredImage: Asset;
     content: EntryFieldTypes.RichText;
+    date: EntryFieldTypes.Date;
+    description: EntryFieldTypes.Text;
+    slug: EntryFieldTypes.Text;
   };
 };
 
@@ -70,7 +41,6 @@ interface Metadata {
   contentTypeId: "metadata";
   fields: {
     identifier: EntryFieldTypes.Text;
-    pageTitle: EntryFieldTypes.Text;
   };
 };
 
@@ -111,48 +81,6 @@ interface Component {
     sectionHeader: TitleBlock;
     titleBlockContent: TitleBlock;
     cards: Array<Card> | Array<FaqCard>;
-  };
-};
-
-export interface LandingPage {
-  contentTypeId: "landingPage";
-  fields: {
-    identifier: EntryFieldTypes.Text;
-    metadata: Metadata;
-    hero: Component;
-    services: Array<Component>;
-    features: Array<Component>;
-    faq: Component;
-    contactUs: Array<Component>;
-    blog: Component;
-  };
-};
-
-export interface LandingImage {
-  contentTypeId: "image";
-  fields: {
-    title: EntryFieldTypes.Text;
-    alt: EntryFieldTypes.Text;
-    file: Asset;
-  };
-};
-
-export interface BlogPost {
-  contentTypeId: "blogPost";
-  fields: {
-    identifier: EntryFieldTypes.Text;
-    slug?: EntryFieldTypes.Text;
-    permalink: EntryFieldTypes.Text;
-    title: EntryFieldTypes.Text;
-    excerpt: EntryFieldTypes.Text;
-    author?: EntryFieldTypes.Text;
-    image?: LandingImage;
-    publishDate: EntryFieldTypes.Text;
-    category?: unknown;
-    tags?: unknown;
-    content: EntryFieldTypes.RichText;
-    relatedBlogPosts?: unknown;
-    videoGallery?: Array<Asset>;
   };
 };
 
