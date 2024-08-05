@@ -3,51 +3,48 @@ import type { HTMLAttributes, ImageMetadata } from 'astro/types';
 
 export interface Post {
   /** A unique ID number that identifies a post. */
-  id: string;
-
-  /**  */
-  metadata?: MetaData;
+  id?: string;
 
   /** A post’s unique slug – part of the post’s URL based on its name, i.e. a post called “My Sample Page” has a slug “my-sample-page”. */
   slug: string;
 
   /**  */
-  title: string;
-
-  /** Optional summary of post content. */
-  excerpt?: string;
-
-  /**  */
   permalink?: string;
-
-  /**  */
-  author?: string;
   
   /**  */
-  publishDate: string;
+  publishDate: Date;
   /**  */
   updateDate?: Date;
 
   /**  */
-  featuredImage?: ImageMetadata | string;
+  title: string;
+  /** Optional summary of post content. */
+  excerpt?: string;
+  /**  */
+  image?: ImageMetadata | string;
 
   /**  */
   category?: Taxonomy;
   /**  */
   tags?: Taxonomy[];
+  /**  */
+  author?: string;
 
   /**  */
   draft?: boolean;
 
   /**  */
-  content?: string;
+  metadata?: MetaData;
+
+  /**  */
+  content?: any;
   Content?: AstroComponentFactory;
 
   /**  */
   readingTime?: number;
   
-  /** other firelds from Contentful */
-  identifier?: string;
+  /**  */
+  data: object;
   relatedBlogPosts?: unknown;
 }
 
