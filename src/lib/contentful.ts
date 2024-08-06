@@ -132,9 +132,9 @@ export interface Category {
 export interface BlogPost {
   contentTypeId: "blogPost";
   fields: {
-    identifier: EntryFieldTypes.Text;
+    // identifier: EntryFieldTypes.Text;
     slug?: EntryFieldTypes.Text;
-    permalink: EntryFieldTypes.Text;
+    // permalink: EntryFieldTypes.Text;
     title: EntryFieldTypes.Text;
     excerpt: EntryFieldTypes.Text;
     author?: EntryFieldTypes.Text;
@@ -143,8 +143,8 @@ export interface BlogPost {
     category?: unknown;
     tags?: unknown;
     content: EntryFieldTypes.RichText;
-    relatedBlogPosts?: unknown;
-    videoGallery?: Array<Asset>;
+    // relatedBlogPosts?: unknown;
+    // videoGallery?: Array<Asset>;
   };
 };
 
