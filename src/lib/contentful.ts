@@ -26,45 +26,20 @@ export interface LandingPage {
   };
 };
 
-export interface Tag {
-  contentTypeId: "tag";
-  fields: {
-    name: EntryFieldTypes.Text;
-    description: EntryFieldTypes.Text;
-  };
-};
-
-export interface Category {
-  contentTypeId: "category";
-  fields: {
-    name: EntryFieldTypes.Text;
-    description: EntryFieldTypes.Text;
-    slug: EntryFieldTypes.Text;
-  };
-};
-
-export interface Author {
-  contentTypeId: "author";
-  fields: {
-    name: EntryFieldTypes.Text;
-    description: EntryFieldTypes.Text;
-  };
-};
-
-export interface BlogPost {
-  contentTypeId: "blogPost";
-  fields: {
-    publishDate: EntryFieldTypes.Date;
-    slug: EntryFieldTypes.Text;
-    title: EntryFieldTypes.Text;
-    author: EntryFieldTypes.Text;
-    category: Category;
-    tags: Array<Tag>;
-    excerpt: EntryFieldTypes.Text;
-    featuredImage: Asset;
-    content: EntryFieldTypes.RichText;
-  };
-};
+// export interface BlogPost {
+//   contentTypeId: "blogPost";
+//   fields: {
+//     publishDate: EntryFieldTypes.Date;
+//     slug: EntryFieldTypes.Text;
+//     title: EntryFieldTypes.Text;
+//     author: EntryFieldTypes.Text;
+//     category: Category;
+//     tags: Array<Tag>;
+//     excerpt: EntryFieldTypes.Text;
+//     featuredImage: Asset;
+//     content: EntryFieldTypes.RichText;
+//   };
+// };
 
 interface Metadata {
   contentTypeId: "metadata";
@@ -134,6 +109,23 @@ export interface LandingImage {
     title: EntryFieldTypes.Text;
     alt: EntryFieldTypes.Text;
     file: Asset;
+  };
+};
+
+export interface Tag {
+  contentTypeId: "tag";
+  fields: {
+    name: EntryFieldTypes.Text;
+    description: EntryFieldTypes.Text;
+  };
+};
+
+export interface Category {
+  contentTypeId: "category";
+  fields: {
+    name: EntryFieldTypes.Text;
+    description: EntryFieldTypes.Text;
+    slug: EntryFieldTypes.Text;
   };
 };
 
