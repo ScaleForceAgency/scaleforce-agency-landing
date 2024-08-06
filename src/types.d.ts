@@ -1,5 +1,19 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
+import type { Asset } from 'contentful';
+
+interface PostData {
+  publishDate: Date
+  updateDate: Date,
+  title: string,
+  excerpt: string,
+  image: Asset,
+  tags: Array<unknown>,
+  category: string,
+  author: string,
+  draft: boolean,
+  metadata: object,
+}
 
 export interface Post {
   /** A unique ID number that identifies a post. */
@@ -8,6 +22,9 @@ export interface Post {
   /** A post’s unique slug – part of the post’s URL based on its name, i.e. a post called “My Sample Page” has a slug “my-sample-page”. */
   slug: string;
 
+  /**  */
+  data?: PostData | any;
+  
   /**  */
   permalink: string;
 
