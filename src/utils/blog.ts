@@ -1,6 +1,8 @@
 import type { PaginateFunction } from 'astro';
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import { contentfulClient } from "../lib/contentful";
+import type { BlogPost } from "../lib/contentful.ts";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+
 import type { Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
@@ -40,10 +42,9 @@ const generatePermalink = async ({
     .join('/');
 };
 
-const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
-  const { id, slug: rawSlug = '', data } = post;
-  const { Content, remarkPluginFrontmatter } = await post.render();
-
+const getNormalizedPost = async (post: Post): Promise<Post> => {
+  const { id, slug: rawSlug = '', data, content } = post;
+  const {  remarkPluginFrontmatter } =  post;
   const {
     publishDate: rawPublishDate = new Date(),
     updateDate: rawUpdateDate,
@@ -93,7 +94,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 
     metadata,
 
-    Content: Content,
+    content: content,
     // or 'content' in case you consume from API
 
     readingTime: remarkPluginFrontmatter?.readingTime,
@@ -101,7 +102,17 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 };
 
 const load = async function (): Promise<Array<Post>> {
-  const posts = await getCollection('post');
+  const contentfulPosts = await contentfulClient.getEntries<BlogPost>({
+    content_type: "blogPost",
+    include: 2,
+  });
+  const posts = contentfulPosts.items.map((post, i) => {
+    return {
+      id: i,
+      slug: post.fields.slug,
+      data: post.fields,
+      content: documentToHtmlString(post.fields.content),
+    } })
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 
   const results = (await Promise.all(normalizedPosts))
