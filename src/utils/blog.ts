@@ -45,7 +45,7 @@ const generatePermalink = async ({
 const getNormalizedPost = async (post: Post): Promise<Post> => {
   const { id, slug: rawSlug = '', data, content } = post;
   // TODO: understand what is happening here to fix it
-  const {  remarkPluginFrontmatter } =  post;
+  // const { remarkPluginFrontmatter } =  post;
   const {
     publishDate: rawPublishDate = new Date(),
     updateDate: rawUpdateDate,
@@ -99,7 +99,7 @@ const getNormalizedPost = async (post: Post): Promise<Post> => {
     // or 'content' in case you consume from API
 
     // TODO: understand what is happening here to fix it
-    readingTime: remarkPluginFrontmatter?.readingTime,
+    // readingTime: remarkPluginFrontmatter?.readingTime,
   };
 };
 
