@@ -26,21 +26,6 @@ export interface LandingPage {
   };
 };
 
-// export interface BlogPost {
-//   contentTypeId: "blogPost";
-//   fields: {
-//     publishDate: EntryFieldTypes.Date;
-//     slug: EntryFieldTypes.Text;
-//     title: EntryFieldTypes.Text;
-//     author: EntryFieldTypes.Text;
-//     category: Category;
-//     tags: Array<Tag>;
-//     excerpt: EntryFieldTypes.Text;
-//     featuredImage: Asset;
-//     content: EntryFieldTypes.RichText;
-//   };
-// };
-
 interface Metadata {
   contentTypeId: "metadata";
   fields: {
