@@ -68,5 +68,11 @@ analytics:
     googleAnalytics:
       id: G-Z960KEFRFJ # null or "G-XXXXXXXXXX"
 
+googleTags:
+  vendors:
+    googleTagManager:      
+      id: G-X1WYXHTSNQ
+      # id: G-Z960KEFRFJ # null or "G-XXXXXXXXXX"
+
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
