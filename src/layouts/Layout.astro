@@ -12,6 +12,10 @@ import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
+// import GTagHead from '~/integrations/google-tag-manager/GTagManagerHead.astro';
+// import GTagBody from '~/integrations/google-tag-manager/GTagManagerBody.astro';
+// import { ANALYTICS } from 'astrowind:config';
+
 // Comment the line below to disable View Transitions
 import { ViewTransitions } from 'astro:transitions';
 
@@ -39,6 +43,10 @@ const { language, textDirection } = I18N;
     <!-- Comment the line below to disable View Transitions -->
     <ViewTransitions fallback="swap" />
     
+    <!-- Google Tag Manager Component-->
+    <!-- <GTagHead id='GTM-MQF864VV' /> -->
+    <!-- <GTagHead /> -->
+    
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){
         w[l]=w[l]||[];
@@ -54,6 +62,10 @@ const { language, textDirection } = I18N;
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">
+    
+    <!-- Google Tag Manager Component-->
+    <!-- <GTagBody id='GTM-MQF864VV' /> -->
+    <!-- <GTagBody /> -->
 
     <!-- Google Tag Manager (noscript) -->
     <noscript>
