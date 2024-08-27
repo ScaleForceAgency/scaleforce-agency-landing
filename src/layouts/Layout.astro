@@ -11,10 +11,8 @@ import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
-
-// import GTagHead from '~/integrations/google-tag-manager/GTagManagerHead.astro';
-// import GTagBody from '~/integrations/google-tag-manager/GTagManagerBody.astro';
-// import { ANALYTICS } from 'astrowind:config';
+import TagsHead from '~/components/common/TagsHead.astro';
+import TagsBody from '~/components/common/TagsBody.astro';
 
 // Comment the line below to disable View Transitions
 import { ViewTransitions } from 'astro:transitions';
@@ -39,44 +37,16 @@ const { language, textDirection } = I18N;
     <Metadata {...metadata} />
     <SiteVerification />
     <Analytics />
+    <TagsHead />
 
     <!-- Comment the line below to disable View Transitions -->
     <ViewTransitions fallback="swap" />
-    
-    <!-- Google Tag Manager Component-->
-    <!-- <GTagHead id='GTM-MQF864VV' /> -->
-    <!-- <GTagHead /> -->
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){
-        w[l]=w[l]||[];
-        w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-        var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-        j.async=true;
-        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-        f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-MQF864VV');
-    </script>
-    <!-- End Google Tag Manager -->
 
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">
-    
-    <!-- Google Tag Manager Component-->
-    <!-- <GTagBody id='GTM-MQF864VV' /> -->
-    <!-- <GTagBody /> -->
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-MQF864VV"
-        height="0" 
-        width="0" 
-        style="display:none;visibility:hidden"
-      ></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <TagsBody />
 
     <slot />
 
