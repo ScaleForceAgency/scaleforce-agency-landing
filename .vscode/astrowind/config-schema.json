@@ -254,9 +254,18 @@
                 }
               },
               "required": ["id"]
+            },
+            "googleTagManager": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": ["string", "null"]
+                }
+              },
+              "required": ["id"]
             }
           },
-          "required": ["googleAnalytics"]
+          "required": ["googleAnalytics", "googleTagManager"]
         }
       },
       "required": ["vendors"]

@@ -1,0 +1,12 @@
+---
+import GoogleTagManagerHead from '../../integrations/google-tag-manager/src/GoogleTagManagerHead.astro';
+import { ANALYTICS } from 'astrowind:config';
+---
+
+{
+  ANALYTICS?.vendors?.googleTagManager?.id ? (
+    <GoogleTagManagerHead
+      id={String(ANALYTICS.vendors.googleTagManager.id)}
+    />
+  ) : null
+}
