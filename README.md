@@ -6,19 +6,54 @@ Built on top of the AstroWind template from OnWidget.  **AstroWind** is a free a
 <details open>
 <summary>Table of Contents</summary>
 
-- [Getting started](#getting-started)
-  - [Project structure](#project-structure)
-  - [Commands](#commands)
-  - [Configuration](#configuration)
-- [Packages, Integrations and Extensions](#packages-integrations-and-extensions)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
+- [Customizations, Packages, Integrations and Extensions](#customizations-packages-integrations-and-extensions)
+- [DevOps](#devops)
+- [AstroWind Template Docs](#astrowind-template-docs)
+  - [Getting started](#getting-started)
+    - [Project structure](#project-structure)
+    - [Commands](#commands)
+    - [Configuration](#configuration)
+    - [Customize Design](#customize-design)
+  - [Acknowledgements](#acknowledgements)
+  - [License](#license)
 
 </details>
 
 <br>
 
-## Getting started
+## Customizations, Packages, Integrations and Extensions
+
+Astro is a great base to start building static websites from and AstroWind is even better.  It has a library of prebuilt components to use when designing your site and it can be customized as much as needed.
+
+- [Contentful & Astro Integration](https://docs.astro.build/en/guides/cms/contentful/): This site uses the (Contentful SDK)[https://github.com/contentful/contentful.js] integration from (Contentful)[https://www.contentful.com] to provides image hosting and blog posts.
+
+It also uses a custom (Google Tags Manager)[https://tagmanager.google.com/] integration that I built myself to match a common pattern used for other analytics providers and already included in the AstroWind template.
+
+- [npm react-calendly](https://www.npmjs.com/package/react-calendly): provides Calendly embed components
+
+- [airtable](https://www.npmjs.com/package/airtable): custom integration for astro: Used as a custom CMS.
+Originally I planned to use (Airtable)[https://www.airtable.com/] as a custom CMS.  There is no Airtable integration avaialble so I also build a REST API ((in this repo, located here)[https://github.com/ScaleForceAgency/scaleforce-agency-landing/blob/main/src/integrations/astro-airtable/astro-airtable.ts]) for connecting to Airtable, as well as a (Make.com)[https://www.Make.com] webhook automation to trigger a Netlify "Build & Deploy" (it used a button in one of the Airtable columns that would trigger the webhook and tell Netlify to build and deploy to production).
+(airtable uses dynamic links and does not suport image hosting for static sites) 
+
+<br>
+
+## DevOps
+
+There are currently two Netlify "Build & Deploy" triggers.  
+
+The first trigger is a code push to the ```main``` branch of the (GitHub repository)[https://github.com/scaleforce-agency/scaleforce-agency-landing] for this website (which is probably where you are reading this README file right now).  This trigger handles any approved pull requests and code updates.
+
+The second trigger is the change in status to ```published``` for blog posts within my Contentful CMS.  That trigger handles content changes and blog updates.
+
+<br>
+
+## AstroWind Template Docs
+
+The rest of this document contains the original AstroWind template README, credit to the original template developer [onWidget](https://onwidget.com), and the original template [LICENSE](./LICENSE.md).
+
+<br>
+
+### Getting started
 
 **AstroWind** tries to give you quick access to creating a website using [Astro 4.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme which focuses on simplicity, good practices and high performance.
 
@@ -26,7 +61,7 @@ Very little vanilla javascript is used only to provide basic functionality so th
 
 In this version the template supports all the options in the `output` configuration, `static`, `hybrid` and `server`, but the blog only works with `prerender = true`. We are working on the next version and aim to make it fully compatible with SSR.
 
-### Project structure
+#### Project structure
 
 Inside **AstroWind** template, you'll see the following folders and files:
 
@@ -91,7 +126,7 @@ Any static assets, like images, can be placed in the `public/` directory if they
 
 <br>
 
-### Commands
+#### Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -107,7 +142,7 @@ All commands are run from the root of the project, from a terminal:
 
 <br>
 
-### Configuration
+#### Configuration
 
 Basic configuration file: `./src/config.yaml`
 
@@ -181,6 +216,8 @@ analytics:
   vendors:
     googleAnalytics:
       id: null # or "G-XXXXXXXXXX"
+    googleTags Manager:
+      id: null # or "GTM-XXXXXXXX"
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
@@ -197,19 +234,12 @@ To customize Font families, Colors or more Elements refer to the following files
 
 <br>
 
-## Packages, Integrations and Extensions
-- [npm react-calendly](https://www.npmjs.com/package/react-calendly): provides Calendly embed components
-- [airtable](https://www.npmjs.com/package/airtable): custom integration for astro: Used as a custom CMS
-- [contentful](https://docs.astro.build/en/guides/cms/contentful/): provides image hosting (airtable uses dynamic links and does not suport image hosting for static sites) 
-
-<br>
-
-## Acknowledgements
+### Acknowledgements
 
 Initially created by [onWidget](https://onwidget.com) and maintained by a community of [contributors](https://github.com/onwidget/astrowind/graphs/contributors).
 
 <br>
 
-## License
+### License
 
 **AstroWind** is licensed under the MIT license — see the [LICENSE](./LICENSE.md) file for details.
