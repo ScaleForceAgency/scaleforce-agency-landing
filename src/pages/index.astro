@@ -16,8 +16,8 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 // Import Utils & Associated Types
 import { getPermalink } from '../utils/permalinks';
-import { contentfulClient } from "../lib/contentful";
-import type { LandingImage, LandingPage } from '../lib/contentful';
+import { contentfulClient } from "../lib/contentful/contentful";
+import type { LandingImage, LandingPage } from '../lib/contentful/contentful';
 // TODO: // import { documentToHtmlString } from "@contentful/rich-text-html-renderer"; 
 
 // Fetch images from Contentful
