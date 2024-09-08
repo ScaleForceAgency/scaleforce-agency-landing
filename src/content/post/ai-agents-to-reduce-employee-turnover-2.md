@@ -25,7 +25,7 @@ tags:
 * [**Retention Strategies**](#retention-strategies)
 * [**Practical Implementation**](#practical-implementation)
 * [**Challenges and Considerations**](#challenges-and-considerations)
-* [**Conclusion**](#conclusion)
+* [**Recap**](#conclusion)
 
 [Part 3](./ai-agents-for-seasonal-businesses) - The third article deals with how AI can help seasonal businesses.
 
