@@ -19,7 +19,7 @@ const whenExternalScripts = (items = []) => hasExternalScripts ? Array.isArray(i
 export default defineConfig({
   output: 'static',
   integrations: [
-    astroAirtable(),
+    // astroAirtable(),
     tailwind({
       applyBaseStyles: false
     }),
