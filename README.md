@@ -37,11 +37,25 @@ Astro is a great base to start building static websites from and AstroWind is ev
 
 ## DevOps
 
+### Netlify
+
 There are currently two Netlify "Build & Deploy" triggers.  
 
 The first trigger is a code push to the ```main``` branch of the (GitHub repository)[https://github.com/scaleforce-agency/scaleforce-agency-landing] for this website (which is probably where you are reading this README file right now).  This trigger handles any approved pull requests and code updates.
 
 The second trigger is the change in status to ```published``` for blog posts within my Contentful CMS.  That trigger handles content changes and blog updates.
+
+### GitHub
+
+To update this repo with upstream changes made to the original AstroWind Template, use the following commands:
+
+``` git remote add template https://github.com/onwidget/astrowind.git```
+
+``` git fetch --all ```
+
+``` git merge template/main --allow-unrelated-histories ```
+
+More info here [https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories).
 
 <br>
 
