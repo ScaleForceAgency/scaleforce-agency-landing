@@ -9,6 +9,21 @@ tags:
   - resources
 ---
 
+## Overview of AI to Reduce Employee Turnover
+### Part 2: Additional Examples
+
+[Part 1](./ai-agents-to-reduce-employee-turnover-1) - The first article covered what employee turnover is and provided a practical scenario to show how AI can help reduce it.
+
+[Part 2](#part-2-additional-examples) - This second article covers a wider range of AI usage examples:
+
+* [**An Intro to Employee Turnover**](#introduction)
+* [**Understanding Employee Turnover**](#understanding-employee-turnover)
+* [**A Practical Example of AI Applied to a High Turnover Scenario**](#the-role-of-ai-in-reducing-employee-turnover)
+
+[Part 3](./ai-agents-for-seasonal-businesses) - The third article deals with how AI can help seasonal businesses.
+
+By the end, you’ll have a better understanding of how AI can be applied in business to reduce employee turnover and help with seasonal or event driven business surges.
+
 ## Introduction
 
 Employee turnover can be a costly and disruptive challenge for any organization, it's an adversary that can silently erode the foundation of any organization. As businesses strive to maintain a stable workforce, leveraging AI agents may offer a significant advantage. This guide explores how AI can help reduce employee turnover, ultimately saving time and resources while fostering a more reliable workforce.
