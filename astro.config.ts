@@ -36,7 +36,6 @@ export default defineConfig({
     icon({
       include: {
         tabler: ['*'],
-        'line-md': ['*'],
       }
     }),
     
@@ -74,7 +73,7 @@ export default defineConfig({
     remarkPlugins: [readingTimeRemarkPlugin],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin]
   },
-  
+
   vite: {
     resolve: {
       alias: {
