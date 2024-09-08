@@ -77,18 +77,18 @@ AI offers an opportunity to cover for the receptionist and AP clerk tasks, as we
             - etc
         - ***The agent can analyze all outstanding payable requests, compare them to a weekly AP budget, consider factors like payment terms and vendor priorities to find where the company could potentially save money and who needs to be kept happy, then prepare a report of which vendors should get paid each week***
 - **AR Clerk:**
-- An AI agent can be built to handle invoicing and collections tasks
-    - Customer invoicing can be oprganized into a standard form
-    - A database can store all outstanding invoices with:
-        - payment terms
-        - due dates
-        - total number of outstanding invoices for the customer
-        - number of previous collections attempts to the customer
-        - customer history and Customer Lifetime Value (CLV)
-        - etc
-    - Invoice and collections emails can be automatically prepared and sent on schedule, with reminders as payment terms and due dates pass, and collections warnings when appropriate
-    - Collections phone calls can be made by AI voice agents as escalations when due dates approach or emails go unresponded to
-    - ***The agent can analyze all outstanding receivable requests, compare them to budgets and cash flow forecasting, consider factors such as customer history and CLV, identify past due accounts and priorities for collections, then prepare a report of customer accounts marked for human follow-up or suspension as well as which customers to call and email for payment to ensure cash flow covers your upcoming expenses***
+    - An AI agent can be built to handle invoicing and collections tasks
+        - Customer invoicing can be oprganized into a standard form
+        - A database can store all outstanding invoices with:
+            - payment terms
+            - due dates
+            - total number of outstanding invoices for the customer
+            - number of previous collections attempts to the customer
+            - customer history and Customer Lifetime Value (CLV)
+            - etc
+        - Invoice and collections emails can be automatically prepared and sent on schedule, with reminders as payment terms and due dates pass, and collections warnings when appropriate
+        - Collections phone calls can be made by AI voice agents as escalations when due dates approach or emails go unresponded to
+        - ***The agent can analyze all outstanding receivable requests, compare them to budgets and cash flow forecasting, consider factors such as customer history and CLV, identify past due accounts and priorities for collections, then prepare a report of customer accounts marked for human follow-up or suspension as well as which customers to call and email for payment to ensure cash flow covers your upcoming expenses***
 
 Using AI for task coverage as outlined above:
 - the Receptionist duties are covered without other employees having to interrupt their focus on their own tasks
@@ -97,17 +97,30 @@ Using AI for task coverage as outlined above:
 
 ### Enhanced HR Processes
 
-We've already relieved some of the pressure, the HR Admin no longer has to constantly hire for the two backoffice roles. They do still have Front Office, Management, and other staff who they may need to recruit, on-board and off-board forand they no longer have access to an Admin Assistant for extra help.  Let's discuss other AI solutions to help with HR tasks.
+We've already relieved some of the pressure, the HR Admin no longer has to constantly hire for the two backoffice roles. They do still have Front Office, Management, and other staff who they may need to recruit, on-board and off-board for.  They also lost access to an Admin Assistant for extra help, but that's ok, because AI can streamline some HR workflows just like it did for the Accounting workflows.  Let's discuss the pros and cons of recruiting and on/off-boarding with AI .
 
 - **Recruiting**
+    - An AI agent can be built to streamline recruiting
+        - A simple automation uses AI to generate job postings in seconds, tailored to the roles you're hiring for
+        - Another automation automatically posts the job on relevant websites and local job boards
+            - *There are still some places where human interaction might be necessary, like an ad in the classifieds section of your local newspapers, AI doesn't eliminate human workers, it only augments them*
+        - Applicants get an email with a link to a prescreening interview conducted by an AI chatbot
+        - If an Applicant passes the prescreen, they get an email inviting them to a one-way video interview
+        - *The HR Admin will still need to review the video interviews to decide who advances to the next round, but it will be a smaller group of only the best candidates picked from the entire pool of applicants*
+        - The AI agent has access to the HR Admin's calendar and can send an email with a scheduling requests for an in person interview to each applicant who passes the one-way video interview
 
-
-- **On-boarding and Off-boarding**
-
+- **On-boarding, Off-boarding and Benefits Administration**
+    - An AI agent can be built to handle on-boarding of new emloyees, benefits administration of current employees, and off-boarding of leaving employees
+    - A chatbot is available 24/7/365 for benefits admin, it is programmed for and trained on each benefit that the company offers
+        - When a new employee is hired, they can have a chat interaction which will ask them all of the relevant questions to enroll them in each benefit, as well as payroll and other new-hire paperwork
+        - Documentation can be automated so that employees receive paperless statements for each benefit
+        - When Open Enrollment periods are upcoming, beginning, or about to end, employees can receieve automated notifications reminding them to enroll
+        - The chatbot is always available and since it is trained on each company benefit, it always has time to explain difficult concepts to employees and educate them on the available benefits
+        - *If an employee still needs help, the agent has accees to the HR Admin's calendar and it can schedule an in person meeting*
 
 ## Conclusion
 
-You've now seen a practical example about how AI can be used to build a leaner and more efficient back offce. A quick recap of our scenario:
+You've now seen a practical example of how AI can be used to build a leaner, more efficient back offce. This implementation doesn't eliminate good workers, it enhances their productivity and creates a better work environment. A quick recap of our scenario:
 - Replaced the part-time Receptionist role with a 24/7/365 AI Phone Operator
 - Elimintaed the need for a part time Admin Assistant
 - Streamlined and automated Accounting tasks so that two staff could do the work of three (and in less time)
@@ -115,20 +128,10 @@ You've now seen a practical example about how AI can be used to build a leaner a
     - Automated incoming collections calls and emails from vendors
     - Automated cashflow forecasting and weekly AP budget estimates
 - Eliminated HR task bloat from constantly recruiting for backoffice roles
-- Streamlined and automated HR tasks 
-    - Automated job posting for open roles
+- Streamlined and automated HR tasks
+    - Automated job posting for open front office and management roles
     - Automated candidate screening and interviewing
     - Automated employee on/off boarding
     - Automated benefits administration
 
-
-
-
-
-Leveraging AI in Human Resources offers several advantages similar to having an extra set of hands that never gets tired:
-
-
-
-## Conclusion
-
-AI is not just a futuristic concept; it’s a practical tool that can significantly reduce employee turnover today. By leveraging AI, businesses can gain predictive insights, enhance recruitment processes, personalize training programs, and improve employee engagement—all factors that contribute to a more stable and committed workforce. While there are ethical considerations and a need to balance technology with the human touch, the benefits of integrating AI in HR processes are clear: lower costs, better decision-making, and a more efficient use of resources. In a competitive market, exploring AI as a solution is not just an option; it’s a strategic necessity for those who aim for long-term success in retaining their talent.
+Leveraging AI in the backoffice offers several advantages, similar to having an extra set of hands that never gets tired.  Continue reading to learn more about the many ways AI can help reduce employee turnover in [Part 2: Additional Examples](./ai-agents-to-reduce-employee-turnover-2.md)!
