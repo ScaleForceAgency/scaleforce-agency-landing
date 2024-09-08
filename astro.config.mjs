@@ -8,7 +8,7 @@ import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 import astrowind from './vendor/integration';
-import astroAirtable from './src/integrations/astro-airtable/astro-airtable';
+// import astroAirtable from './src/lib/astro-airtable/astro-airtable';
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter.mjs';
 import react from "@astrojs/react";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

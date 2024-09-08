@@ -38,7 +38,7 @@ export default function astroAirtable(): AstroIntegration {
     name: 'astro-airtable',
     hooks: {
       'astro:config:setup': ({ injectScript }) => {
-        injectScript('page', `import { fetchRecords } from '/src/integrations/astro-airtable/astro-airtable.ts';`);
+        injectScript('page', `import { fetchRecords } from '/src/lib/astro-airtable/astro-airtable.ts';`);
       },
     },
   };
