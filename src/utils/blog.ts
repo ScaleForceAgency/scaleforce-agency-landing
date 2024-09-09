@@ -1,13 +1,13 @@
 import type { PaginateFunction } from 'astro';
-import { contentfulClient } from "../lib/contentful/contentful";
-import type { BlogPost } from "../lib/contentful/contentful";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
+
+import { contentfulClient } from "../lib/contentful/contentful";
+import type { BlogPost } from "../lib/contentful/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 const generatePermalink = async ({
   id,
