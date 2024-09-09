@@ -3,10 +3,11 @@ publishDate: 2024-08-05T10:00:00Z
 title: AI Assistants vs AI Agents
 excerpt: What's the difference between an assistant and an agent? Read on to find out which one is right for your business needs.
 image: https://images.unsplash.com/photo-1429743305873-d4065c15f93e?q=80&w=2934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+category: Resources
 tags:
   - AI Assistants
   - AI Agents
-  - resources
+author: ScaleForce
 ---
 
 ## Artificial Intelligence: A Brief Overview

@@ -3,10 +3,11 @@ publishDate: 2024-08-26T10:00:00Z
 title: "AI to Reduce Employee Turnover, Part 1: A Practical Scenario"
 excerpt: End the constant cycle of recruiting, onboarding and training. AI won't leave for a different company over a 50¢ pay raise.
 image: https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+category: Resources
 tags:
-  - ai agents
-  - ai assistants
-  - resources
+  - AI agents
+  - AI assistants
+author: ScaleForce
 ---
 
 ## Overview of AI to Reduce Employee Turnover
