@@ -2,17 +2,27 @@ import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
 import type { Asset } from 'contentful';
 
-interface PostData {
-  publishDate: Date
-  updateDate: Date,
-  title: string,
-  excerpt: string,
-  image: Asset,
-  tags: Array<unknown>,
-  category: string,
-  author: string,
-  draft: boolean,
-  metadata: object,
+export interface FormattedContentfulPosts {
+  id: string,
+  slug: string,
+  content: string,
+  collection: string,
+  data: {
+    publishDate?: Date,
+    updateDate?: Date,
+    draft?: boolean,
+
+    title: string,
+    excerpt?: string,
+    image?: Asset,
+
+    category?: string,
+    tags?: Array<unknown>,
+    author?: string,
+
+    metadata?: object, // this is not optional in: src/content/config.ts
+  }
+  // render: function
 }
 
 export interface Post {
@@ -21,9 +31,6 @@ export interface Post {
 
   /** A post’s unique slug – part of the post’s URL based on its name, i.e. a post called “My Sample Page” has a slug “my-sample-page”. */
   slug: string;
-
-  /**  */
-  data?: PostData | any;
   
   /**  */
   permalink: string;
