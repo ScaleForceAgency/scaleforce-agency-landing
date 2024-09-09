@@ -1,12 +1,12 @@
 import type { PaginateFunction } from 'astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { Post } from '~/types';
+import type { FormattedContentfulPost, Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 
 import { contentfulClient } from "../lib/contentful/contentful";
-import type { BlogPost } from "../lib/contentful/contentful";
+import type { UseCasePost } from "../lib/contentful/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 const generatePermalink = async ({
@@ -106,8 +106,8 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 };
 
 const load = async function (): Promise<Array<Post>> {
-  const rawContentfulPosts = await contentfulClient.getEntries<BlogPost>({
-    content_type: "blogPost",
+  const rawContentfulPosts = await contentfulClient.getEntries<UseCasePost>({
+    content_type: "useCasePost",
     include: 2,
   });
   const contentfulPosts = rawContentfulPosts.items.map((post, i) => {
