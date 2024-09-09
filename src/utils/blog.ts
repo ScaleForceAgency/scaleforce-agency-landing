@@ -3,6 +3,8 @@ import { contentfulClient } from "../lib/contentful/contentful";
 import type { BlogPost } from "../lib/contentful/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
 import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
@@ -42,7 +44,7 @@ const generatePermalink = async ({
     .join('/');
 };
 
-const getNormalizedPost = async (post: Post): Promise<Post> => {
+const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
   const { id, slug: rawSlug = '', data, content } = post;
   // TODO: understand what is happening here to fix it
   // const { remarkPluginFrontmatter } =  post;
@@ -104,18 +106,24 @@ const getNormalizedPost = async (post: Post): Promise<Post> => {
 };
 
 const load = async function (): Promise<Array<Post>> {
-  const contentfulPosts = await contentfulClient.getEntries<BlogPost>({
+  const rawContentfulPosts = await contentfulClient.getEntries<BlogPost>({
     content_type: "blogPost",
     include: 2,
   });
-  const posts = contentfulPosts.items.map((post, i) => {
+  const contentfulPosts = rawContentfulPosts.items.map((post, i) => {
     return {
       id: i,
       slug: post.fields.slug,
       data: post.fields,
       content: documentToHtmlString(post.fields.content),
-    } })
-  const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
+    }
+  });
+  const normalizedContentfulPosts = contentfulPosts.map(async (post) => await getNormalizedPost(post));
+  
+  const localPosts = await getCollection('post');
+  const normalizedLocalPosts = localPosts.map(async (post) => await getNormalizedPost(post));
+
+  const normalizedPosts = [...normalizedLocalPosts, ...normalizedContentfulPosts];
 
   const results = (await Promise.all(normalizedPosts))
     .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
