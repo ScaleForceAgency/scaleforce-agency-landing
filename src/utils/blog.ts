@@ -1,6 +1,6 @@
 import type { PaginateFunction } from 'astro';
-import { contentfulClient } from "../lib/contentful";
-import type { BlogPost } from "../lib/contentful.ts";
+import { contentfulClient } from "../lib/contentful/contentful";
+import type { BlogPost } from "../lib/contentful/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 import type { Post } from '~/types';
