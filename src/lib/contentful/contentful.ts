@@ -3,29 +3,6 @@
 import contentful from "contentful";
 import type { EntryFieldTypes, Asset } from "contentful";
 
-export interface LandingImage {
-  contentTypeId: "image";
-  fields: {
-    title: EntryFieldTypes.Text;
-    alt: EntryFieldTypes.Text;
-    file: Asset;
-  };
-};
-
-export interface LandingPage {
-  contentTypeId: "landingPage";
-  fields: {
-    identifier: EntryFieldTypes.Text;
-    metadata: Metadata;
-    hero: Component;
-    services: Array<Component>;
-    features: Array<Component>;
-    faq: Component;
-    contactUs: Array<Component>;
-    blog: Component;
-  };
-};
-
 interface Metadata {
   contentTypeId: "metadata";
   fields: {
