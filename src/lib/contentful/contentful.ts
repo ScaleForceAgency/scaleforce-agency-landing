@@ -91,8 +91,8 @@ export interface Category {
   };
 };
 
-export interface BlogPost {
-  contentTypeId: "blogPost";
+export interface UseCasePost {
+  contentTypeId: "useCasePost";
   fields: {
     slug?: EntryFieldTypes.Text;
     title: EntryFieldTypes.Text;
