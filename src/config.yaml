@@ -66,7 +66,7 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      # id: G-X1WYXHTSNQ
+      id: null #G-XXXXXXXXXX
     googleTagManager:
       id: GTM-MQF864VV
 
