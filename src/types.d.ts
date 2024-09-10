@@ -1,5 +1,29 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
+import type { Asset, RichText } from 'contentful';
+
+export interface FormattedContentfulPost {
+  id: string,
+  slug?: string,
+  body: RichText,
+  collection: string,
+  data: {
+    publishDate?: string,
+    updateDate?: string,
+    draft?: boolean,
+
+    title: string,
+    excerpt?: string,
+    image?: Asset,
+
+    category?: string,
+    tags?: Array<string>,
+    author?: string,
+
+    metadata?: object, // this is not optional in: src/content/config.ts
+  }
+  // render: function
+}
 
 export interface Post {
   /** A unique ID number that identifies a post. */
@@ -7,7 +31,7 @@ export interface Post {
 
   /** A post’s unique slug – part of the post’s URL based on its name, i.e. a post called “My Sample Page” has a slug “my-sample-page”. */
   slug: string;
-
+  
   /**  */
   permalink: string;
 
@@ -37,7 +61,7 @@ export interface Post {
   draft?: boolean;
 
   /**  */
-  Content?: AstroComponentFactory;
+  Content?: AstroComponentFactory | string;
   content?: string;
 
   /**  */

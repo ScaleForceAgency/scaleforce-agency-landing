@@ -24,29 +24,29 @@ export const headerData = {
     },
     {
       text: 'Blog',
-      links: [
-        {
-          text: 'Blog List',
+    //   links: [
+        // {
+        //   text: 'Blog List',
           href: getBlogPermalink(),
         },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-        {
-          text: 'Categories',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Tags',
-          href: getPermalink('astro', 'tag'),
-        },
-      ],
-    },
+    //     {
+    //       text: 'Article',
+    //       href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
+    //     },
+    //     {
+    //       text: 'Article (with MDX)',
+    //       href: getPermalink('markdown-elements-demo-post', 'post'),
+    //     },
+    //     {
+    //       text: 'Categories',
+    //       href: getPermalink('tutorials', 'category'),
+    //     },
+    //     {
+    //       text: 'Tags',
+    //       href: getPermalink('astro', 'tag'),
+    //     },
+    //   ],
+    // },
   ],
   actions: [{ text: 'Book a call', href: getPermalink('/#contact') }],
 };
