@@ -95,14 +95,20 @@ export interface UseCasePost {
   contentTypeId: "useCasePost";
   fields: {
     slug?: EntryFieldTypes.Text;
+    body?: EntryFieldTypes.RichText;
+    
+    publishDate?: EntryFieldTypes.Text;
+    updateDate?: EntryFieldTypes.Text;
+    draft?: EntryFieldTypes.Boolean
+    
     title: EntryFieldTypes.Text;
-    excerpt: EntryFieldTypes.Text;
-    author?: EntryFieldTypes.Text;
+    excerpt?: EntryFieldTypes.Text;
     image?: LandingImage;
-    publishDate: EntryFieldTypes.Text;
-    category?: unknown;
-    tags?: unknown;
-    content: EntryFieldTypes.RichText;
+    
+    category?: EntryFieldTypes.Text;
+    tags?: Array<string>;
+    author?: EntryFieldTypes.Text;
+    
   };
 };
 
