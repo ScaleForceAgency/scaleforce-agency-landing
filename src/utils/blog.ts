@@ -94,8 +94,6 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     tags: tags,
     author: author,
 
-    draft: draft,
-
     metadata,
 
     Content: Content,
@@ -105,27 +103,105 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   };
 };
 
-const load = async function (): Promise<Array<Post>> {
-  const rawContentfulPosts = await contentfulClient.getEntries<UseCasePost>({
+const getNormalizedContentfulPost = async (post: FormattedContentfulPost): Promise<Post> => {
+  const { id, slug: rawSlug = '', data, body } = post;
+  // const { Content, remarkPluginFrontmatter } = post;
+
+
+  const {
+    publishDate: rawPublishDate = new Date(),
+    updateDate: rawUpdateDate,
+    title,
+    excerpt,
+    image,
+    tags: rawTags = [],
+    category: rawCategory,
+    author,
+    draft = false,
+    metadata = {},
+  } = data;
+
+  const slug = cleanSlug(rawSlug); // cleanSlug(rawSlug.split('/').pop());
+  const publishDate = new Date(rawPublishDate);
+  const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
+  const content = documentToHtmlString(body);
+
+  const category = rawCategory
+    ? {
+        slug: cleanSlug(rawCategory),
+        title: rawCategory,
+      }
+    : undefined;
+
+  const tags = rawTags.map((tag: string) => ({
+    slug: cleanSlug(tag),
+    title: tag,
+  }));
+
+  return {
+    id: id,
+    slug: slug,
+    permalink: await generatePermalink({ id, slug, publishDate, category: category?.slug }),
+
+    publishDate: publishDate,
+    updateDate: updateDate,
+    draft: draft,
+
+    title: title,
+    excerpt: excerpt,
+    image: image,
+
+    category: category,
+    tags: tags,
+    author: author,
+
+    metadata,
+
+    content: content,
+
+    // readingTime: remarkPluginFrontmatter?.readingTime,
+  };
+};
+
+const loadContentfulPosts = async function (): Promise<Array<FormattedContentfulPost>> {
+  const contentfulResponse = await contentfulClient.getEntries<UseCasePost>({
     content_type: "useCasePost",
     include: 2,
   });
-  const contentfulPosts = rawContentfulPosts.items.map((post, i) => {
+
+  const formattedContentfulPosts = (await Promise.all(contentfulResponse.items)).map((post) => {
     return {
-      id: i,
+      id: "contentful-" + post.fields.slug,
       slug: post.fields.slug,
-      data: post.fields,
-      content: documentToHtmlString(post.fields.content),
-    }
+      body: post.fields.body,
+      collection: 'contentfulUseCasePost',
+      data: {
+        publishDate: post.fields.publishDate,
+        updateDate: post.fields.updateDate,
+        draft: post.fields.draft,
+
+        title: post.fields.title,
+        excerpt: post.fields.excerpt,
+        image: post.fields.image,
+
+        category: post.fields.category,
+        tags: post.fields.tags,
+        author: post.fields.author,
+      },
+    };
   });
-  const normalizedContentfulPosts = contentfulPosts.map(async (post) => await getNormalizedPost(post));
-  
+  return formattedContentfulPosts
+};
+
+const load = async function (): Promise<Array<Post>> {
   const localPosts = await getCollection('post');
   const normalizedLocalPosts = localPosts.map(async (post) => await getNormalizedPost(post));
 
-  const normalizedPosts = [...normalizedLocalPosts, ...normalizedContentfulPosts];
+  const contentfulPosts = await loadContentfulPosts();
+  const normalizedContentfulPosts = contentfulPosts.map(async (post) => await getNormalizedContentfulPost(post));
 
-  const results = (await Promise.all(normalizedPosts))
+  const combinedPosts = [...normalizedLocalPosts, ...normalizedContentfulPosts];
+  const results = (await Promise.all(combinedPosts))
     .sort((a, b) => a.publishDate.valueOf() - b.publishDate.valueOf())
     .filter((post) => !post.draft);
 
