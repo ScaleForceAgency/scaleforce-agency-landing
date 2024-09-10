@@ -1,15 +1,15 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
-import type { Asset } from 'contentful';
+import type { Asset, RichText } from 'contentful';
 
 export interface FormattedContentfulPost {
   id: string,
-  slug: string,
-  content: string,
+  slug?: string,
+  body: RichText,
   collection: string,
   data: {
-    publishDate?: Date,
-    updateDate?: Date,
+    publishDate?: string,
+    updateDate?: string,
     draft?: boolean,
 
     title: string,
@@ -17,7 +17,7 @@ export interface FormattedContentfulPost {
     image?: Asset,
 
     category?: string,
-    tags?: Array<unknown>,
+    tags?: Array<string>,
     author?: string,
 
     metadata?: object, // this is not optional in: src/content/config.ts
@@ -61,7 +61,7 @@ export interface Post {
   draft?: boolean;
 
   /**  */
-  Content?: AstroComponentFactory;
+  Content?: AstroComponentFactory | string;
   content?: string;
 
   /**  */
