@@ -25,13 +25,13 @@ Built on top of the AstroWind template from [onWidget](https://onwidget.com).  *
 
 Astro is a great base to start building static websites from and AstroWind is even better.  It has a library of prebuilt components to use when designing your site and it can be customized as much as needed.
 
-- [Google Tags Manager](https://tagmanager.google.com/): This site uses GTM for advanced analytics and conversion tracking.  AstroWind has support for basic Google Analytics ((GA4)[https://analytics.google.com/]) but not for GTM.  I build a simple custom integration for GTM that matches the pattern used by AstroWind for GA4.
+- [Google Tags Manager](https://tagmanager.google.com/): This site uses GTM for advanced analytics and conversion tracking.  AstroWind has support for basic [Google Analytics (GA4)](https://analytics.google.com/) but not for GTM.  I build a simple custom integration for GTM that matches the pattern used by AstroWind for GA4.
 
-- [Contentful & Astro Integration](https://docs.astro.build/en/guides/cms/contentful/): This site uses the (Contentful SDK)[https://github.com/contentful/contentful.js] integration from (Contentful)[https://www.contentful.com] to provides image hosting and blog posts.
+- [Contentful & Astro Integration](https://docs.astro.build/en/guides/cms/contentful/): This site uses the [Contentful SDK](https://github.com/contentful/contentful.js) integration from [Contentful](https://www.contentful.com) to provides image hosting and blog posts.
 
 - [npm react-calendly](https://www.npmjs.com/package/react-calendly): This site uses an integration with Calendly to embed their platform's calendar and scheduling components.
 
-- [airtable](https://www.npmjs.com/package/airtable): Originally I had planned to use (Airtable)[https://www.airtable.com/] as a custom CMS.  There is no Airtable & Astro integration avaialble so I built a custom integration with a REST API ((in this repo, located here)[https://github.com/ScaleForceAgency/scaleforce-agency-landing/blob/main/src/integrations/astro-airtable/astro-airtable.ts]) to connect to Airtable, as well as a (Make.com)[https://www.Make.com] webhook automation to trigger a Netlify "Build & Deploy" sequence (it used a button in one of the Airtable columns that would trigger the webhook and tell Netlify to build and deploy to production).  Airtable uses dynamic links for imagesthat change every 1-2 days, so it does not suport image hosting for static sites.  That meant I would need to use Contentful for images, and I decided to remove Airtable altogether from this project.  I left the legacy code there as an example of how to integrate Aitable into Astro as a custom CMS.
+- [airtable](https://www.npmjs.com/package/airtable): Originally I had planned to use [Airtable](https://www.airtable.com/) as a custom CMS.  There is no Airtable & Astro integration avaialble so I built a custom integration with a REST API ([in this repo, located here](https://github.com/ScaleForceAgency/scaleforce-agency-landing/blob/main/src/integrations/astro-airtable/astro-airtable.ts)) to connect to Airtable, as well as a [Make.com](https://www.Make.com) webhook automation to trigger a Netlify "Build & Deploy" sequence (it used a button in one of the Airtable columns that would trigger the webhook and tell Netlify to build and deploy to production).  Airtable uses dynamic links for imagesthat change every 1-2 days, so it does not suport image hosting for static sites.  That meant I would need to use Contentful for images, and I decided to remove Airtable altogether from this project.  I left the legacy code there as an example of how to integrate Aitable into Astro as a custom CMS.
 
 <br>
 
@@ -41,7 +41,7 @@ Astro is a great base to start building static websites from and AstroWind is ev
 
 There are currently two Netlify "Build & Deploy" triggers.  
 
-The first trigger is a code push to the ```main``` branch of the (GitHub repository)[https://github.com/scaleforce-agency/scaleforce-agency-landing] for this website (which is probably where you are reading this README file right now).  This trigger handles any approved pull requests and code updates.
+The first trigger is a code push to the ```main``` branch of the [GitHub repository](https://github.com/scaleforce-agency/scaleforce-agency-landing) for this website (which is probably where you are reading this README file right now).  This trigger handles any approved pull requests and code updates.
 
 The second trigger is the change in status to ```published``` for blog posts within my Contentful CMS.  That trigger handles content changes and blog updates.
 
