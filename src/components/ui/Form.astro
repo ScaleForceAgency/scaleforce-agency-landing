@@ -79,6 +79,8 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
     )
   }
 
+  <div data-netlify-recaptcha="true" class="flex justify-around mt-10"><!-- <div>captcha</div> --></div>
+
   {
     button && (
       <div class="mt-10 grid">
@@ -96,5 +98,4 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
       </div>
     )
   }
-  <div data-netlify-recaptcha="true"></div>
 </form>
