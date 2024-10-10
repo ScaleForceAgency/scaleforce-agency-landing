@@ -72,7 +72,7 @@ const metadata = {
     title={`${servicesContent[0]['fields']['sectionHeader']['fields']['title']}`}
     items={[...servicesContent[0]['fields']['cards']].map(card => card['fields'])}
     image={{
-      src: AiSummarizerAgent.fields.file['fields']['file']['url'],
+      src: 'https:' + AiSummarizerAgent.fields.file['fields']['file']['url'],
       alt: AiSummarizerAgent.fields.alt,
     }}
   >
@@ -94,7 +94,7 @@ const metadata = {
     isAfterContent
     items={[...servicesContent[1]['fields']['cards']].map(card => card['fields'])}
     image={{
-      src: AiVoiceAgent.fields.file['fields']['file']['url'],
+      src: 'https:' + AiVoiceAgent.fields.file['fields']['file']['url'],
       alt: AiVoiceAgent.fields.alt,
     }}
   >
@@ -117,7 +117,7 @@ const metadata = {
     isAfterContent
     items={[...servicesContent[2]['fields']['cards']].map(card => card['fields'])}
     image={{
-      src: AiAgentSwarm.fields.file['fields']['file']['url'],
+      src: 'https:' + AiAgentSwarm.fields.file['fields']['file']['url'],
       alt: AiAgentSwarm.fields.alt,
     }}
   >
@@ -154,7 +154,7 @@ const metadata = {
   subtitle={`${featuresContent[0]['fields']['titleBlock']['fields']['subtitle']}`}
   items={[...featuresContent[0]['fields']['cards']].map(card => card['fields'])}
   image={{
-    src: DevelopmentProcess.fields.file['fields']['file']['url'],
+    src: 'https:' + DevelopmentProcess.fields.file['fields']['file']['url'],
     alt: DevelopmentProcess.fields.alt,
   }}
 />
