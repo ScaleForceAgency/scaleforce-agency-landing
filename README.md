@@ -1,6 +1,8 @@
 # ScaleForce.agency Landing and Lead Generation Site
 Built on top of the AstroWind template from [onWidget](https://onwidget.com).  **AstroWind** is a free and open-source template to make your website using **[Astro 4.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6827720e-01b1-4d10-a380-6e58995a83d3/deploy-status)](https://app.netlify.com/sites/scaleforce/deploys)
+
 <br>
 
 <details open>
